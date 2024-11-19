@@ -1,192 +1,127 @@
 {
   "users": [
     {
-      "id": "1",
-      "email": "user1@gmail.com",
-      "password": "user1",
-      "name": "Анастасія",
-      "events": [
-        {
-          "id": "1",
-          "sum": "1,250.00",
-          "date": "12.09.2024 18:04:02",
-          "category": "Їжа",
-          "type": "Витрати",
-          "description": "Обід у ресторані"
-        },
-        {
-          "id": "2",
-          "sum": "300.00",
-          "date": "14.06.2024 12:15:45",
-          "category": "Транспорт",
-          "type": "Витрати",
-          "description": "Квиток на автобус"
-        },
-        {
-          "id": "3",
-          "sum": "500.00",
-          "date": "16.06.2024 08:30:00",
-          "category": "Здоров'я",
-          "type": "Витрати",
-          "description": "Придбання ліків"
-        },
-        {
-          "id": "4",
-          "sum": "200.00",
-          "date": "18.03.2024 15:45:10",
-          "category": "Розваги",
-          "type": "Витрати",
-          "description": "Квиток у кіно"
-        },
-        {
-          "id": "5",
-          "sum": "15,000.00",
-          "date": "20.06.2024 10:10:10",
-          "category": "Зарплата",
-          "type": "Дохід",
-          "description": "Місячна зарплата"
-        },
-        {
-          "id": "6",
-          "sum": "1,100.00",
-          "date": "22.06.2024 20:30:30",
-          "category": "Їжа",
-          "type": "Витрати",
-          "description": "Продукти в супермаркеті"
-        },
-        {
-          "id": "7",
-          "sum": "800.00",
-          "date": "24.06.2024 13:45:15",
-          "category": "Одяг",
-          "type": "Витрати",
-          "description": "Покупка нової сорочки"
-        },
-        {
-          "id": "8",
-          "sum": "15,000.00",
-          "date": "26.08.2024 17:05:20",
-          "category": "Зарплата",
-          "type": "Дохід",
-          "description": "Місячна зарплата"
-        },
-        {
-          "id": "9",
-          "sum": "400.00",
-          "date": "28.06.2024 19:30:50",
-          "category": "Транспорт",
-          "type": "Витрати",
-          "description": "Заправка автомобіля"
-        },
-        {
-          "id": "10",
-          "sum": "150.00",
-          "date": "30.06.2024 14:50:40",
-          "category": "Розваги",
-          "type": "Витрати",
-          "description": "Похід у боулінг"
-        },
-        {
-          "id": "11",
-          "sum": "600.00",
-          "date": "02.07.2024 11:20:35",
-          "category": "Їжа",
-          "type": "Витрати",
-          "description": "Кафе з друзями"
-        }
-      ],
-      "categories": [
-        {
-          "name": "Їжа",
-          "limit": "5,000.00"
-        },
-        {
-          "name": "Транспорт",
-          "limit": "1,000.00"
-        },
-        {
-          "name": "Здоров'я",
-          "limit": "3,000.00"
-        },
-        {
-          "name": "Розваги",
-          "limit": "2,000.00"
-        },
-        {
-          "name": "Зарплата",
-          "limit": ""
-        },
-        {
-          "name": "Одяг",
-          "limit": "4,000.00"
-        }
-      ]
+      "id": 1,
+      "email": "user@user.com",
+      "password": "12345678",
+      "name": "Admin"
     },
     {
-      "id": "2",
-      "email": "user2@gmail.com",
-      "password": "user2",
-      "name": "Користувач",
-      "events": [
-        {
-          "id": "1",
-          "sum": "24,000.00",
-          "date": "13.06.2024 14:30:00",
-          "category": "Зарплата",
-          "type": "Дохід",
-          "description": "Місячна зарплата"
-        },
-        {
-          "id": "2",
-          "sum": "400.00",
-          "date": "15.06.2024 09:00:00",
-          "category": "Їжа",
-          "type": "Витрати",
-          "description": "Купівля ланчу"
-        },
-        {
-          "id": "3",
-          "sum": "1,200.00",
-          "date": "17.06.2024 18:45:00",
-          "category": "Транспорт",
-          "type": "Витрати",
-          "description": "Технічне обслуговування автомобіля"
-        },
-        {
-          "id": "4",
-          "sum": "300.00",
-          "date": "19.06.2024 20:10:00",
-          "category": "Розваги",
-          "type": "Витрати",
-          "description": "Відвідування парку розваг"
-        },
-        {
-          "id": "5",
-          "sum": "25,500.00",
-          "date": "21.07.2024 16:00:00",
-          "category": "Зарплата",
-          "type": "Дохід",
-          "description": "Місячна зарплата"
-        }
-      ],
-      "categories": [
-        {
-          "name": "Їжа",
-          "limit": "8,000.00"
-        },
-        {
-          "name": "Транспорт",
-          "limit": "3,000.00"
-        },
-        {
-          "name": "Розваги",
-          "limit": "3,000.00"
-        },
-        {
-          "name": "Зарплата",
-          "limit": ""
-        }
-      ]
+      "id": 2,
+      "email": "john@user.com",
+      "password": "qwerty",
+      "name": "John",
+      "check": true
+    },
+    {
+      "id": 3,
+      "name": "Annie",
+      "password": "123456",
+      "email": "annie@user.com"
+    }
+  ],
+  "bill": [
+    {
+      "value": 100200,
+      "currency": "UAH",
+      "userId": 1
+    },
+    {
+      "value": 62000,
+      "currency": "UAH",
+      "userId": 2
+    },
+    {
+      "value": 85000,
+      "currency": "UAH",
+      "userId": 3
+    }
+  ],
+  "currency": {
+    "base": "base",
+    "date": "01.01.2022 12:01",
+    "rates": [
+      {
+        "currency": "EUR",
+        "rate": 0.023
+      },
+      {
+        "currency": "UAH",
+        "rate": 1
+      },
+      {
+        "currency": "USD",
+        "rate": 0.024
+      }
+    ],
+    "success": true,
+    "timestamp": 1
+  },
+  "categories": [
+    {
+      "id": 1,
+      "name": "Home",
+      "capacity": 15000,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Food",
+      "capacity": 10000,
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "name": "Car",
+      "capacity": 7000,
+      "userId": 3
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "type": "income",
+      "amount": 1250,
+      "categoryId": 2,
+      "date": "12.06.2019 19:49:02",
+      "description": "Gave food away",
+      "userId": 2
+    },
+    {
+      "id": 2,
+      "type": "outcome",
+      "amount": 1300,
+      "categoryId": 1,
+      "date": "13.06.2019 19:49:02",
+      "description": "Bought a dishwasher",
+      "userId": 1
+    },
+    {
+      "type": "income",
+      "amount": 1480,
+      "categoryId": 2,
+      "date": "17.06.2019 14:00:48",
+      "id": 3,
+      "description": "Hike to Auchan with marks. Free meal",
+      "userId": 2
+    },
+    {
+      "type": "outcome",
+      "amount": 2470,
+      "categoryId": 2,
+      "date": "17.06.2019 14:00:58",
+      "id": 4,
+      "description": "Purchase for a week",
+      "userId": 2
+    },
+    {
+      "type": "outcome",
+      "amount": 4000,
+      "categoryId": 3,
+      "date": "10.06.2019 14:01:58",
+      "id": 5,
+      "description": "Refueling + maintenance pass",
+      "userId": 3
     }
   ]
 }
