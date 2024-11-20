@@ -1,20 +1,20 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "user@user.com",
       "password": "12345678",
       "name": "Admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "john@user.com",
       "password": "qwerty",
       "name": "John",
       "check": true
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Annie",
       "password": "123456",
       "email": "annie@user.com"
@@ -59,19 +59,19 @@
   },
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Home",
       "capacity": 15000,
       "userId": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Food",
       "capacity": 10000,
       "userId": 2
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Car",
       "capacity": 7000,
       "userId": 3
@@ -79,7 +79,7 @@
   ],
   "events": [
     {
-      "id": 1,
+      "id": "1",
       "type": "income",
       "amount": 1250,
       "categoryId": 2,
@@ -88,7 +88,7 @@
       "userId": 2
     },
     {
-      "id": 2,
+      "id": "2",
       "type": "outcome",
       "amount": 1300,
       "categoryId": 1,
@@ -101,7 +101,7 @@
       "amount": 1480,
       "categoryId": 2,
       "date": "17.06.2019 14:00:48",
-      "id": 3,
+      "id": "3",
       "description": "Hike to Auchan with marks. Free meal",
       "userId": 2
     },
@@ -110,7 +110,7 @@
       "amount": 2470,
       "categoryId": 2,
       "date": "17.06.2019 14:00:58",
-      "id": 4,
+      "id": "4",
       "description": "Purchase for a week",
       "userId": 2
     },
@@ -119,7 +119,7 @@
       "amount": 4000,
       "categoryId": 3,
       "date": "10.06.2019 14:01:58",
-      "id": 5,
+      "id": "5",
       "description": "Refueling + maintenance pass",
       "userId": 3
     }
