@@ -1,0 +1,44 @@
+<p>Registration for access</p>
+<form class="registration__form" [formGroup]="registrationForm">
+  @if(serverErrorMessage) {
+    <mat-error class="registration__form__error">{{ serverErrorMessage }}</mat-error>
+  }
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Enter email" formControlName="email">
+    @if(registrationForm.get('email')!.hasError('required')) {
+      <mat-error>Field is required.</mat-error>
+    }
+    @if(registrationForm.get('email')!.hasError('email')) {
+      <mat-error>Please enter a valid email.</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Enter password" formControlName="password" (input)="updatePasswordCount()">
+    @if(registrationForm.get('password')!.hasError('required')) {
+      <mat-error>Field is required.</mat-error>
+    }
+    @if(registrationForm.get('password')!.hasError('minlength')) {
+      <mat-error>Password length must be more than 6 symbols. Now {{ passwordCount }}.</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Enter name" formControlName="name">
+    @if(registrationForm.get('name')!.hasError('required')) {
+      <mat-error>Field is required.</mat-error>
+    }
+  </mat-form-field>
+  <mat-checkbox formControlName="check">I agree with the rules</mat-checkbox>
+  <button mat-flat-button class="registration__form__button" [disabled]="!registrationForm.valid" (click)="onSubmit()">
+    Sign up
+  </button>
+</form>
+<p class="registration__action">
+  Already have an account?
+  <a class="registration__action__link">Sign in</a>
+</p>
+@if(isLoading$ | async) {
+  <mat-spinner class="registration__loader"></mat-spinner>
+}
