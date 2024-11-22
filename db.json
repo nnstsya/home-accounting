@@ -1,0 +1,127 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@user.com",
+      "password": "12345678",
+      "name": "Admin"
+    },
+    {
+      "id": 2,
+      "email": "john@user.com",
+      "password": "qwerty",
+      "name": "John",
+      "check": true
+    },
+    {
+      "id": 3,
+      "name": "Annie",
+      "password": "123456",
+      "email": "annie@user.com"
+    }
+  ],
+  "bill": [
+    {
+      "value": 100200,
+      "currency": "UAH",
+      "userId": 1
+    },
+    {
+      "value": 62000,
+      "currency": "UAH",
+      "userId": 2
+    },
+    {
+      "value": 85000,
+      "currency": "UAH",
+      "userId": 3
+    }
+  ],
+  "currency": {
+    "base": "base",
+    "date": "01.01.2022 12:01",
+    "rates": [
+      {
+        "currency": "EUR",
+        "rate": 0.023
+      },
+      {
+        "currency": "UAH",
+        "rate": 1
+      },
+      {
+        "currency": "USD",
+        "rate": 0.024
+      }
+    ],
+    "success": true,
+    "timestamp": 1
+  },
+  "categories": [
+    {
+      "id": 1,
+      "name": "Home",
+      "capacity": 15000,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Food",
+      "capacity": 10000,
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "name": "Car",
+      "capacity": 7000,
+      "userId": 3
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "type": "income",
+      "amount": 1250,
+      "categoryId": 2,
+      "date": "12.06.2019 19:49:02",
+      "description": "Gave food away",
+      "userId": 2
+    },
+    {
+      "id": 2,
+      "type": "outcome",
+      "amount": 1300,
+      "categoryId": 1,
+      "date": "13.06.2019 19:49:02",
+      "description": "Bought a dishwasher",
+      "userId": 1
+    },
+    {
+      "type": "income",
+      "amount": 1480,
+      "categoryId": 2,
+      "date": "17.06.2019 14:00:48",
+      "id": 3,
+      "description": "Hike to Auchan with marks. Free meal",
+      "userId": 2
+    },
+    {
+      "type": "outcome",
+      "amount": 2470,
+      "categoryId": 2,
+      "date": "17.06.2019 14:00:58",
+      "id": 4,
+      "description": "Purchase for a week",
+      "userId": 2
+    },
+    {
+      "type": "outcome",
+      "amount": 4000,
+      "categoryId": 3,
+      "date": "10.06.2019 14:01:58",
+      "id": 5,
+      "description": "Refueling + maintenance pass",
+      "userId": 3
+    }
+  ]
+}
