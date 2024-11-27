@@ -1,7 +1,7 @@
 <div class="page">
   <div class="form__container">
     <h1>Home bookkeeping</h1>
-    <p>Registration for access</p>
+    <p>Sign In For Work</p>
     <form class="form" [formGroup]="form">
 
       @if(serverErrorMessage) {
@@ -30,24 +30,14 @@
         }
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
-        @if(form.get('name')!.hasError('required')) {
-          <mat-error>Field is required.</mat-error>
-        }
-      </mat-form-field>
-
-      <mat-checkbox formControlName="check">I agree with the rules</mat-checkbox>
-
       <button mat-flat-button class="form__button" [disabled]="!form.valid" (click)="onSubmit()">
-        Sign up
+        Sign in
       </button>
     </form>
 
     <p class="action">
-      Already have an account?
-      <a class="action__link" routerLink="/auth/login">Sign in</a>
+      Don`t have an account?
+      <a class="action__link" routerLink="/auth/register">Sign Up!</a>
     </p>
 
     @if(isLoading$ | async) {
