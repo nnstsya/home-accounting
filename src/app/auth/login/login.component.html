@@ -21,7 +21,7 @@
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password" (input)="updatePassword()">
+        <input matInput formControlName="password" (input)="updatePasswordCount()">
         @if(form.get('password')!.hasError('required')) {
           <mat-error>Field is required.</mat-error>
         }
@@ -40,7 +40,7 @@
       <a class="action__link" routerLink="/auth/register">Sign Up!</a>
     </p>
 
-    @if(isLoading$ | async) {
+    @if(isLoading) {
       <mat-spinner class="loader"></mat-spinner>
     }
   </div>
