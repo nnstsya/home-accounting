@@ -7,11 +7,11 @@ import { UserFullInfo, UserModel } from '@auth/models/user';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly baseUrl: string = 'http://localhost:3000/users';
+  private readonly basePath: string = '/users';
   private readonly http: HttpClient = inject(HttpClient);
 
   signUp(user: UserFullInfo): Observable<UserFullInfo> {
-    return this.http.post<UserFullInfo>(this.baseUrl, user).pipe(
+    return this.http.post<UserFullInfo>(this.basePath, user).pipe(
       delay(400),
       tap((response: UserFullInfo) => this.storeUserData(response)),
       catchError(() => throwError(() => new Error('Registration failed due to a server error.')))
@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   signIn(email: string): Observable<UserFullInfo[]> {
-    return this.http.get<UserFullInfo[]>(`${this.baseUrl}?email=${email}`).pipe(
+    return this.http.get<UserFullInfo[]>(`${this.basePath}?email=${email}`).pipe(
       delay(400),
       tap((response: UserFullInfo[]) => this.storeUserData(response[0])),
       catchError(() => throwError(() => new Error('Login failed due to a server error.')))
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   isEmailRegistered(email: string): Observable<boolean> {
-    return this.http.get<UserFullInfo[]>(`${this.baseUrl}?email=${email}`).pipe(
+    return this.http.get<UserFullInfo[]>(`${this.basePath}?email=${email}`).pipe(
       delay(400),
       map((users) => users.length > 0),
       catchError(() => throwError(() => new Error('Unable to check email due to a server error.')))
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   validatePassword(email: string, password: string): Observable<boolean> {
-    return this.http.get<UserFullInfo[]>(`${this.baseUrl}?email=${email}`).pipe(
+    return this.http.get<UserFullInfo[]>(`${this.basePath}?email=${email}`).pipe(
       delay(400),
       map((user) => user[0].password === password),
       catchError(() => throwError(() => new Error('Password verification failed due to a server error.')))
