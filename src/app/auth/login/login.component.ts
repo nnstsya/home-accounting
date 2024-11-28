@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { catchError, of } from 'rxjs';
+import { catchError, of, switchMap } from 'rxjs';
 import { SignInForm } from '@auth/models/form';
 import { UserCredentials } from '@auth/models/user';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -19,27 +19,25 @@ export class LoginComponent extends AuthDirective<UserCredentials, SignInForm> {
 
   protected validateFormBeforeSend(formData: Omit<UserCredentials, 'id'>): void {
     this.authService.isEmailRegistered(formData.email).pipe(
-      takeUntilDestroyed(this.destroyRef),
       catchError((err) => {
         this.handleError(err.message);
         return of(null);
-      })
-    ).subscribe((emailExists: boolean | null) => {
-      if (emailExists) {
-        this.validatePassword(formData);
-      } else if (emailExists === false) {
-        this.handleError('This user does not exists');
-      }
-    });
-  }
-
-  private validatePassword(formData: Omit<UserCredentials, 'id'>): void {
-    this.authService.validatePassword(formData.email, formData.password).pipe(
-      takeUntilDestroyed(this.destroyRef),
-      catchError((err) => {
-        this.handleError(err.message);
+      }),
+      switchMap((emailExists: boolean | null) => {
+        if (emailExists) {
+          return this.authService.validatePassword(formData.email, formData.password).pipe(
+            catchError((err) => {
+              this.handleError(err.message);
+              return of(null);
+            })
+          );
+        } else if (emailExists === false) {
+          this.handleError('This user does not exist');
+          return of(null);
+        }
         return of(null);
-      })
+      }),
+      takeUntilDestroyed(this.destroyRef)
     ).subscribe((passwordMatches: boolean | null) => {
       if (passwordMatches) {
         this.handleSignIn(formData);
@@ -50,7 +48,7 @@ export class LoginComponent extends AuthDirective<UserCredentials, SignInForm> {
   }
 
   private handleSignIn(formData: Omit<UserCredentials, 'id'>): void {
-    this.isLoading$.next(true);
+    this.isLoading = true;
 
     this.authService.signIn(formData.email).pipe(
       takeUntilDestroyed(this.destroyRef),
@@ -59,7 +57,7 @@ export class LoginComponent extends AuthDirective<UserCredentials, SignInForm> {
         return of();
       })
     ).subscribe(() => {
-      this.isLoading$.next(false);
+      this.isLoading = false;
       this.router.navigateByUrl('home');
     });
   }
