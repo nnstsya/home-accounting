@@ -36,7 +36,7 @@ export class RegisterComponent extends AuthDirective<UserFullInfo, SignUpForm> {
   }
 
   private handleSignUp(formData: Omit<UserFullInfo, 'id'>): void {
-    this.isLoading$.next(true);
+    this.isLoading = true;
 
     this.authService.signUp({ ...formData, id: Date.now() }).pipe(
       takeUntilDestroyed(this.destroyRef),
@@ -45,7 +45,7 @@ export class RegisterComponent extends AuthDirective<UserFullInfo, SignUpForm> {
         return of();
       })
     ).subscribe(() => {
-      this.isLoading$.next(false);
+      this.isLoading = false;
       this.router.navigateByUrl('home');
     });
   }
