@@ -11,10 +11,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { RegisterComponent } from './register/register.component';
 import { AuthRoutingModule } from './auth-routing.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
