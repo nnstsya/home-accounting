@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output, OutputEmitterRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,12 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  onToggleDrawer: OutputEmitterRef<void> = output<void>();
   router: Router = inject(Router);
+
+  toggleDrawer(): void {
+    this.onToggleDrawer.emit();
+  }
 
   handleLogout(): void {
     localStorage.removeItem('user');
