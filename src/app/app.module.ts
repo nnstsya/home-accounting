@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterOutlet } from '@angular/router';
+import { CoreModule } from '@core/core.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterOutlet
+    RouterOutlet,
+    CoreModule
   ],
   providers: [
     provideAnimationsAsync()
