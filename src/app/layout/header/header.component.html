@@ -1,0 +1,26 @@
+<div class="header">
+  <div class="header__section">
+    <mat-icon class="button">menu</mat-icon>
+    <p class="header__section__heading">Home accounting:</p>
+  </div>
+  <div class="header__section">
+    <span>•</span>
+    <mat-icon class="button">settings</mat-icon>
+    <span>•</span>
+    <mat-icon class="button">help_outline</mat-icon>
+    <span>•</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="header__section__menu">
+      <mat-icon class="button">person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/records">
+        <mat-icon class="button">note_add</mat-icon>
+        <span>Make a record</span>
+      </button>
+      <button mat-menu-item (click)="handleLogout()">
+        <mat-icon class="button">exit_to_app</mat-icon>
+        <span>Exit</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
