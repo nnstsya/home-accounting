@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+  padding: 12px 16px;
+  background-color: #005bba;
+  color: #fff;
+
+  &__section {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+
+    &__heading {
+      margin: 0;
+    }
+
+    &__menu {
+      color: #fff;
+    }
+  }
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 80%;
+  transition: all 0.2s ease-out;
+}
