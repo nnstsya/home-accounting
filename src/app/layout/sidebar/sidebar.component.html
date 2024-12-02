@@ -1,0 +1,16 @@
+<div class="sidebar__user-info">
+  <p class="sidebar__user-info__name">{{ user.name }}</p>
+  <p>{{ user.email }}</p>
+  <img class="sidebar__user-info__avatar" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Profile picture">
+</div>
+
+<mat-divider></mat-divider>
+
+<div>
+  <p class="sidebar__tabs__header">Pages</p>
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="Bills page" routerLink="/home/bills"></mat-tab>
+    <mat-tab label="History page" routerLink="/home/history"></mat-tab>
+    <mat-tab label="Records page" routerLink="/home/records"></mat-tab>
+  </mat-tab-group>
+</div>

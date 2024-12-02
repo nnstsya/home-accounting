@@ -6,11 +6,16 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { MatDivider } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    LayoutComponent
+    LayoutComponent,
+    SidebarComponent
   ],
   imports: [
     MatIcon,
@@ -18,7 +23,12 @@ import { RouterLink } from '@angular/router';
     MatMenuTrigger,
     MatMenu,
     MatMenuItem,
-    RouterLink
+    RouterLink,
+    MatDrawerContainer,
+    MatDrawer,
+    MatTabGroup,
+    MatTab,
+    MatDivider,
   ],
   exports: [
     LayoutComponent
