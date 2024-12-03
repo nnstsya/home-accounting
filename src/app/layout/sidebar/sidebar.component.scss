@@ -1,0 +1,48 @@
+:host::ng-deep {
+  .mat-mdc-tab-labels {
+    flex-direction: column;
+  }
+
+  .mdc-tab {
+    justify-content: flex-start;
+  }
+
+  .mdc-tab--active, .mdc-tab:focus {
+    background-color: #005bba;
+
+    .mdc-tab__content .mdc-tab__text-label {
+      color: #fff;
+    }
+  }
+
+  .mat-divider {
+    margin-block: 14px;
+    border-top-color: #e0e2ec;
+  }
+}
+
+.sidebar {
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-block: 14px;
+
+    &__name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &__avatar {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  &__tabs__header {
+    font-size: 14px;
+    padding-inline: 24px;
+  }
+}
