@@ -26,6 +26,7 @@
     "paths": {
       "@auth/*": ["./src/app/auth/*"],
       "@core/*": ["./src/app/core/*"],
+      "@home/*": ["./src/app/home/*"],
       "@layout/*": ["./src/app/layout/*"],
       "@environments/*": ["./src/environments/*"]
     }
