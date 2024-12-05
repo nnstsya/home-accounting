@@ -6,6 +6,7 @@
   <mat-divider></mat-divider>
 
   @if(extendedEventsData$ | async; as extendedEventsData) {
+    <app-history-chart [data]="extendedEventsData"></app-history-chart>
     <app-history-table [data]="extendedEventsData"></app-history-table>
   } @else {
     <p>Loading...</p>

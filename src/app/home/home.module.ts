@@ -22,13 +22,16 @@ import { MatDivider } from '@angular/material/divider';
 import { HistoryComponent } from './history/history.component';
 import { MatButton } from '@angular/material/button';
 import { HistoryTableComponent } from '@home/history/history-table/history-table.component';
+import { HistoryChartComponent } from '@home/history/history-chart/history-chart.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
     HomeComponent,
     BillingComponent,
     HistoryComponent,
-    HistoryTableComponent
+    HistoryTableComponent,
+    HistoryChartComponent
   ],
   imports: [
     LayoutModule,
@@ -50,7 +53,8 @@ import { HistoryTableComponent } from '@home/history/history-table/history-table
     DatePipe,
     MatDivider,
     NgStyle,
-    MatButton
+    MatButton,
+    HighchartsChartModule
   ],
   providers: []
 })
