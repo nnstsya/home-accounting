@@ -26,27 +26,27 @@ import { MatError } from '@angular/material/form-field';
     HomeComponent,
     BillingComponent
   ],
-    imports: [
-        LayoutModule,
-        HomeRoutingModule,
-        MatTable,
-        MatHeaderRow,
-        MatRow,
-        MatColumnDef,
-        MatHeaderCell,
-        MatCell,
-        MatCellDef,
-        MatHeaderCellDef,
-        MatIcon,
-        AsyncPipe,
-        DecimalPipe,
-        KeyValuePipe,
-        MatRowDef,
-        MatHeaderRowDef,
-        DatePipe,
-        MatDivider,
-        MatError
-    ],
+  imports: [
+    LayoutModule,
+    HomeRoutingModule,
+    MatTable,
+    MatHeaderRow,
+    MatRow,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatCellDef,
+    MatHeaderCellDef,
+    MatIcon,
+    AsyncPipe,
+    DecimalPipe,
+    KeyValuePipe,
+    MatRowDef,
+    MatHeaderRowDef,
+    DatePipe,
+    MatDivider,
+    MatError
+  ],
   providers: []
 })
 export class HomeModule {}

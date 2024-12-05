@@ -14,7 +14,7 @@ export class BillingService {
   private API_KEY: string = environment.apiKey;
 
   getCurrentUserBill(userId: string): Observable<BillingModel> {
-    const params: HttpParams = new HttpParams().set("userId", userId);
+    const params: HttpParams = new HttpParams().set('userId', userId);
 
     return this.http.get<BillingModel[]>('/bill', { params }).pipe(
       delay(200),
@@ -24,10 +24,9 @@ export class BillingService {
   }
 
   getExchangeRates(): Observable<ExchangeRateModel> {
-    const params: HttpParams = new HttpParams().set("apikey", this.API_KEY);
+    const params: HttpParams = new HttpParams().set('apikey', this.API_KEY);
 
     return this.http.get<ExchangeRateModel>(this.API_URL, { params }).pipe(
-      delay(200),
       catchError(() => throwError(() => new Error('Failed to fetch exchange rates.')))
     );
   }
