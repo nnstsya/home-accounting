@@ -1,0 +1,59 @@
+<div class="page">
+  <div class="page__header">
+    <h1 class="page__header__heading">Billing Page</h1>
+    <mat-icon class="page__header__icon" (click)="getData()">refresh</mat-icon>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="tables">
+
+
+    @if (convertedBalance$ | async; as convertedBalance) {
+      @if (exchangeRates$ | async; as exchangeRates) {
+        <div class="tables__table">
+          <p>Bill</p>
+
+          <table mat-table [dataSource]="convertedBalance" class="tables__table__bill">
+            <ng-container matColumnDef="currency">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let balance" class="tables__table__bill-currency"> {{ balance.currency }} </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+              <th mat-header-cell *matHeaderCellDef>Value</th>
+              <td mat-cell *matCellDef="let balance" class="tables__table__bill-value"> {{ balance.value | number:'1.2-2' }} </td>
+            </ng-container>
+
+            <tr mat-row *matRowDef="let row; columns: ['currency', 'value']"></tr>
+          </table>
+        </div>
+
+        <div class="tables__table">
+          <p>Exchange rate</p>
+
+          <table mat-table [dataSource]="exchangeRates.rates | keyvalue">
+            <ng-container matColumnDef="currency">
+              <th mat-header-cell *matHeaderCellDef>Currency</th>
+              <td mat-cell *matCellDef="let rate"> {{ rate.key }} </td>
+            </ng-container>
+            <ng-container matColumnDef="rate">
+              <th mat-header-cell *matHeaderCellDef>Rate</th>
+              <td mat-cell *matCellDef="let rate"> {{ rate.value }} </td>
+            </ng-container>
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let date"> {{ exchangeRates.date | date:'dd.MM.yyyy' }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['currency', 'rate', 'date']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['currency', 'rate', 'date']"></tr>
+          </table>
+        </div>
+      } @else {
+        <p>Loading...</p>
+      }
+    } @else {
+      <p>Loading...</p>
+    }
+  </div>
+</div>

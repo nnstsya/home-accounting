@@ -2,12 +2,24 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '@home/home.component';
+import { BillingComponent } from '@home/billing/billing.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
-  },
+    component: HomeComponent,
+    children: [
+      {
+        path: 'billing',
+        component: BillingComponent
+      },
+      {
+        path: '',
+        redirectTo: 'billing',
+        pathMatch: 'full'
+      }
+    ]
+  }
 ];
 
 @NgModule({

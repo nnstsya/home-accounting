@@ -1,0 +1,66 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100vh;
+  padding: 40px;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &__heading {
+      line-height: 34px;
+      margin: 0;
+    }
+
+    &__icon {
+      padding: 4px;
+
+      &:hover {
+        border-radius: 50%;
+        padding: 4px;
+        background-color: #dcdcdc;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.tables {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+
+  &__table {
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding:24px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 4px 4px 0, rgba(0, 0, 0, 0.24) 0 1px 2px;
+    flex: 1;
+  }
+}
+
+:host::ng-deep {
+  .mat-mdc-table {
+    background-color: #fff;
+    min-width: 100%;
+  }
+
+  .mat-mdc-cell.tables__table__bill-value {
+    font-size: 18px;
+  }
+
+  .mat-mdc-cell.tables__table__bill-currency {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .tables__table__bill tr {
+    height: 70px;
+  }
+}
