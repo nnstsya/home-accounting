@@ -36,7 +36,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td mat-cell *matCellDef="let row">
-        <button mat-raised-button>Open</button>
+        <button mat-raised-button [routerLink]="'/home/event/' + row.index + '/' + row.id">Open</button>
       </td>
     </ng-container>
 
