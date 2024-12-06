@@ -24,6 +24,10 @@ import { MatButton } from '@angular/material/button';
 import { HistoryTableComponent } from '@home/history/history-table/history-table.component';
 import { HistoryChartComponent } from '@home/history/history-chart/history-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,13 @@ import { HighchartsChartModule } from 'highcharts-angular';
     MatButton,
     HighchartsChartModule,
     MatButton,
-    NgClass
+    NgClass,
+    MatPaginator,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatSort,
+    MatSortHeader
   ],
   providers: []
 })
