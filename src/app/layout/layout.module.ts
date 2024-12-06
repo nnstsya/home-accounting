@@ -5,10 +5,10 @@ import { LayoutComponent } from './layout.component';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { MatTabLink, MatTabNav } from '@angular/material/tabs';
 import { MatDivider } from '@angular/material/divider';
 
 @NgModule({
@@ -26,9 +26,10 @@ import { MatDivider } from '@angular/material/divider';
     RouterLink,
     MatDrawerContainer,
     MatDrawer,
-    MatTabGroup,
-    MatTab,
     MatDivider,
+    RouterLinkActive,
+    MatTabLink,
+    MatTabNav,
   ],
   exports: [
     LayoutComponent

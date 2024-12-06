@@ -1,0 +1,13 @@
+<div class="page">
+  <div class="page__header">
+    <h1 class="page__header__heading">History Page</h1>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  @if(extendedEventsData$ | async; as extendedEventsData) {
+    <app-history-table [data]="extendedEventsData"></app-history-table>
+  } @else {
+    <p>Loading...</p>
+  }
+</div>
