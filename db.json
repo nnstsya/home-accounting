@@ -77,43 +77,43 @@
       "userId": 1
     },
     {
-      "id": 1,
+      "id": 4,
       "name": "Food",
       "capacity": 10000,
       "userId": 2
     },
     {
-      "id": 2,
+      "id": 5,
       "name": "Entertainment",
       "capacity": 3000,
       "userId": 2
     },
     {
-      "id": 3,
+      "id": 6,
       "name": "Groceries",
       "capacity": 8000,
       "userId": 2
     },
     {
-      "id": 4,
+      "id": 7,
       "name": "Other",
       "capacity": 8000,
       "userId": 2
     },
     {
-      "id": 1,
+      "id": 8,
       "name": "Car",
       "capacity": 7000,
       "userId": 3
     },
     {
-      "id": 2,
+      "id": 9,
       "name": "Travel",
       "capacity": 12000,
       "userId": 3
     },
     {
-      "id": 3,
+      "id": 10,
       "name": "Furniture",
       "capacity": 6000,
       "userId": 3
@@ -148,73 +148,73 @@
       "userId": 1
     },
     {
-      "id": 1,
+      "id": 3,
       "type": "Income",
       "amount": 1250,
-      "categoryId": 1,
+      "categoryId": 4,
       "date": "12.06.2019 19:49:02",
       "description": "Gave food away",
       "userId": 2
     },
     {
-      "id": 2,
+      "id": 4,
       "type": "Income",
       "amount": 1480,
-      "categoryId": 3,
+      "categoryId": 6,
       "date": "17.06.2019 14:00:48",
       "description": "Hike to Auchan with marks. Free meal",
       "userId": 2
     },
     {
-      "id": 3,
+      "id": 5,
       "type": "Outcome",
       "amount": 2470,
-      "categoryId": 3,
+      "categoryId": 6,
       "date": "17.06.2019 14:00:58",
       "description": "Purchase for a week",
       "userId": 2
     },
     {
-      "id": 4,
+      "id": 6,
       "type": "Income",
       "amount": 1000,
-      "categoryId": 4,
+      "categoryId": 7,
       "date": "20.07.2019 16:45:00",
       "description": "Received cashback from entertainment subscriptions",
       "userId": 2
     },
     {
-      "id": 5,
+      "id": 7,
       "type": "Outcome",
       "amount": 150,
-      "categoryId": 3,
+      "categoryId": 6,
       "date": "10.08.2019 18:00:00",
       "description": "Grocery shopping for the week",
       "userId": 2
     },
     {
-      "id": 1,
+      "id": 8,
       "type": "Outcome",
       "amount": 4000,
-      "categoryId": 1,
+      "categoryId": 8,
       "date": "10.06.2019 14:01:58",
       "description": "Refueling + maintenance pass",
       "userId": 3
     },
     {
-      "id": 2,
+      "id": 9,
       "type": "Outcome",
       "amount": 500,
-      "categoryId": 2,
+      "categoryId": 9,
       "date": "25.07.2019 12:20:45",
       "description": "Flight tickets for vacation",
       "userId": 3
     },
     {
-      "id": 3,
+      "id": 10,
       "type": "Outcome",
       "amount": 1200,
-      "categoryId": 3,
+      "categoryId": 10,
       "date": "12.08.2019 11:00:00",
       "description": "Bought new sofa for the living room",
       "userId": 3
