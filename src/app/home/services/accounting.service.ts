@@ -33,7 +33,7 @@ export class AccountingService {
   }
 
   getCurrentUserEvents(userId: string): Observable<EventModel[]> {
-    const params: HttpParams = new HttpParams().set("userId", userId);
+    const params: HttpParams = new HttpParams().set('userId', userId);
 
     return this.http.get<EventModel[]>('/events', { params }).pipe(
       delay(400),
@@ -42,7 +42,7 @@ export class AccountingService {
   }
 
   getCurrentUserCategories(userId: string): Observable<EventCategoryModel[]> {
-    const params: HttpParams = new HttpParams().set("userId", userId);
+    const params: HttpParams = new HttpParams().set('userId', userId);
 
     return this.http.get<EventCategoryModel[]>('/categories', { params }).pipe(
       delay(400),
