@@ -1,0 +1,69 @@
+:host::ng-deep {
+  .mat-divider {
+    margin-block: 14px;
+    border-top-color: #c9cad5;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100vh;
+  padding: 40px;
+  align-items: center;
+
+  &__header {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    gap: 12px;
+
+    &__heading {
+      line-height: 34px;
+      margin: 0;
+    }
+
+    &__back-icon:hover {
+      cursor: pointer;
+      opacity: 0.75;
+      transition: 0.3s ease-out;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 18px 36px;
+    min-width: 350px;
+
+    &__heading {
+      font-size: 28px;
+      align-self: center;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    &__list, &__date {
+      font-size: 18px;
+      margin: 0;
+    }
+  }
+}
+
+.blue-shadow {
+  box-shadow: 5px 5px 2px 5px rgba(63, 81, 181, 0.5);
+}
+
+.red-shadow {
+  box-shadow: 5px 5px 2px 5px rgba(255, 3, 3, 0.5);
+}
+
+.income-text {
+  color: #3f51b5;
+}
+
+.outcome-text {
+  color: #f44336;
+}

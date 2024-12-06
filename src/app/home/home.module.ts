@@ -17,14 +17,27 @@ import {
   MatTable
 } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
-import { AsyncPipe, DatePipe, DecimalPipe, KeyValuePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, DecimalPipe, KeyValuePipe, NgClass } from '@angular/common';
 import { MatDivider } from '@angular/material/divider';
-import { MatError } from '@angular/material/form-field';
+import { HistoryComponent } from './history/history.component';
+import { MatButton } from '@angular/material/button';
+import { HistoryTableComponent } from '@home/history/history-table/history-table.component';
+import { HistoryChartComponent } from '@home/history/history-chart/history-chart.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    BillingComponent
+    BillingComponent,
+    HistoryComponent,
+    HistoryTableComponent,
+    HistoryChartComponent,
+    EventDetailsComponent
   ],
   imports: [
     LayoutModule,
@@ -45,7 +58,16 @@ import { MatError } from '@angular/material/form-field';
     MatHeaderRowDef,
     DatePipe,
     MatDivider,
-    MatError
+    MatButton,
+    HighchartsChartModule,
+    MatButton,
+    NgClass,
+    MatPaginator,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatSort,
+    MatSortHeader
   ],
   providers: []
 })

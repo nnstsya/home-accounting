@@ -1,0 +1,31 @@
+<div class="page">
+  <div class="page__header">
+    <mat-icon class="page__header__back-icon" routerLink="/home/history">keyboard_backspace</mat-icon>
+    <h1 class="page__header__heading">Page of event №{{ eventIndex }}</h1>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  @if(event$ | async; as event) {
+    <div class="page__card" [ngClass]="event.type === 'Income' ? 'blue-shadow' : 'red-shadow'">
+      <p class="page__card__heading" [ngClass]="event.type === 'Income' ? 'income-text' : 'outcome-text'">{{ event.type }}</p>
+      <ul class="page__card__list">
+        <li>
+          Amount:
+          <strong>{{ event.amount }}</strong>
+        </li>
+        <li>
+          Category:
+          <strong>{{ event.categoryId }}</strong>
+        </li>
+        <li>
+          Comment:
+          <strong>{{ event.description }}</strong>
+        </li>
+      </ul>
+      <p class="page__card__date">{{ event.date }}</p>
+    </div>
+  } @else {
+   <p>Loading...</p>
+  }
+</div>
