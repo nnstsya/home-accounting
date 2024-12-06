@@ -2,6 +2,8 @@ import { Component, input, InputSignal, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ExtendedEventModel } from '@home/models/event.model';
 
+type IndexedData = ExtendedEventModel & { index: number };
+
 @Component({
   selector: 'app-history-table',
   templateUrl: './history-table.component.html',
@@ -10,10 +12,15 @@ import { ExtendedEventModel } from '@home/models/event.model';
 export class HistoryTableComponent implements OnInit {
   data: InputSignal<ExtendedEventModel[]> = input.required<ExtendedEventModel[]>();
 
-  displayedColumns: string[] = ['id', 'amount', 'date', 'category', 'type', 'actions'];
-  dataSource: MatTableDataSource<ExtendedEventModel> = new MatTableDataSource();
+  displayedColumns: string[] = ['index', 'amount', 'date', 'category', 'type', 'actions'];
+  dataSource: MatTableDataSource<IndexedData> = new MatTableDataSource();
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.data());
+    const dataWithIndex: IndexedData[] = this.data().map((item, index) => ({
+      ...item,
+      index: index + 1,
+    }));
+
+    this.dataSource = new MatTableDataSource(dataWithIndex);
   }
 }
