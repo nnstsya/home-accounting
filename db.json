@@ -148,7 +148,7 @@
       "userId": 1
     },
     {
-      "id": 3,
+      "id": 4,
       "type": "Income",
       "amount": 1250,
       "categoryId": 4,
@@ -157,7 +157,7 @@
       "userId": 2
     },
     {
-      "id": 4,
+      "id": 5,
       "type": "Income",
       "amount": 1480,
       "categoryId": 6,
@@ -166,7 +166,7 @@
       "userId": 2
     },
     {
-      "id": 5,
+      "id": 6,
       "type": "Outcome",
       "amount": 2470,
       "categoryId": 6,
@@ -175,7 +175,7 @@
       "userId": 2
     },
     {
-      "id": 6,
+      "id": 7,
       "type": "Income",
       "amount": 1000,
       "categoryId": 7,
@@ -184,7 +184,7 @@
       "userId": 2
     },
     {
-      "id": 7,
+      "id": 8,
       "type": "Outcome",
       "amount": 150,
       "categoryId": 6,
@@ -193,7 +193,7 @@
       "userId": 2
     },
     {
-      "id": 8,
+      "id": 9,
       "type": "Outcome",
       "amount": 4000,
       "categoryId": 8,
@@ -202,7 +202,7 @@
       "userId": 3
     },
     {
-      "id": 9,
+      "id": 10,
       "type": "Outcome",
       "amount": 500,
       "categoryId": 9,
@@ -211,7 +211,7 @@
       "userId": 3
     },
     {
-      "id": 10,
+      "id": 11,
       "type": "Outcome",
       "amount": 1200,
       "categoryId": 10,

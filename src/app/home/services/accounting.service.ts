@@ -49,4 +49,14 @@ export class AccountingService {
       catchError(() => throwError(() => new Error('Failed to fetch categories information.')))
     );
   }
+
+  getEventById(eventId: string): Observable<EventModel> {
+    const params: HttpParams = new HttpParams().set('id', eventId);
+
+    return this.http.get<EventModel[]>('/events', { params }).pipe(
+      delay(400),
+      map(response => response[0]),
+      catchError(() => throwError(() => new Error('Failed to fetch event information.')))
+    );
+  }
 }

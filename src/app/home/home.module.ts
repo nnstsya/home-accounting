@@ -28,6 +28,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
     BillingComponent,
     HistoryComponent,
     HistoryTableComponent,
-    HistoryChartComponent
+    HistoryChartComponent,
+    EventDetailsComponent
   ],
   imports: [
     LayoutModule,
