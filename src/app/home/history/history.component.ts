@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AccountingService } from '@home/services/accounting.service';
 import { EventCategoryModel, EventModel, ExtendedEventModel } from '@home/models/event.model';
 import { combineLatest, map, Observable, of } from 'rxjs';
+import { AddEventModalComponent } from '@home/modals/add-event-modal/add-event-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-history',
@@ -16,6 +18,7 @@ export class HistoryComponent implements OnInit {
   userId: string = JSON.parse(localStorage.getItem('user')!).id;
 
   private accountingService: AccountingService = inject(AccountingService);
+  private dialog: MatDialog = inject(MatDialog);
 
   ngOnInit() {
     this.getData()
@@ -25,6 +28,14 @@ export class HistoryComponent implements OnInit {
     this.getUserCategories();
     this.getEventsData();
     this.getExtendedEventsData();
+  }
+
+  openAddEventModal(): void {
+    this.dialog.open(AddEventModalComponent, {
+      width: '400px',
+      disableClose: true,
+      data: { categories: this.userCategories$ }
+    });
   }
 
   private getUserCategories(): void {
