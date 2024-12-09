@@ -25,10 +25,21 @@ import { HistoryTableComponent } from '@home/history/history-table/history-table
 import { HistoryChartComponent } from '@home/history/history-chart/history-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { RecordsComponent } from './records/records.component';
+import { RecordsTableComponent } from './records/records-table/records-table.component';
+import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
+import { AddCategoryModalComponent } from './modals/add-category-modal/add-category-modal.component';
+import { EditCategoryModalComponent } from './modals/edit-category-modal/edit-category-modal.component';
+import { DeleteCategoryModalComponent } from './modals/delete-category-modal/delete-category-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +48,13 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     HistoryComponent,
     HistoryTableComponent,
     HistoryChartComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    RecordsComponent,
+    RecordsTableComponent,
+    AddEventModalComponent,
+    AddCategoryModalComponent,
+    EditCategoryModalComponent,
+    DeleteCategoryModalComponent
   ],
   imports: [
     LayoutModule,
@@ -67,7 +84,17 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     MatInput,
     MatLabel,
     MatSort,
-    MatSortHeader
+    MatSortHeader,
+    MatDialogTitle,
+    MatDialogClose,
+    ReactiveFormsModule,
+    MatRadioButton,
+    MatError,
+    MatDialogActions,
+    MatRadioGroup,
+    MatOption,
+    MatSelect,
+    MatDialogContent
   ],
   providers: []
 })
