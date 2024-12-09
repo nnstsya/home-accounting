@@ -15,7 +15,8 @@ export class EditCategoryModalComponent {
   categoryEditForm: FormGroup<CategoryEditFormModel>;
   userId: string = JSON.parse(localStorage.getItem('user')!).id;
 
-  data: { categories: EventCategoryModel[], currentCategoryId: number } = inject(MAT_DIALOG_DATA);
+  data: { categories: EventCategoryModel[], category: EventCategoryModel } = inject(MAT_DIALOG_DATA);
+  currentCategory: EventCategoryModel = this.data.category;
 
   private dialogRef: MatDialogRef<EditCategoryModalComponent> = inject(MatDialogRef);
   private accountingService: AccountingService = inject(AccountingService);
@@ -24,9 +25,22 @@ export class EditCategoryModalComponent {
 
   constructor() {
     this.categoryEditForm = this.fb.group({
-      id: [String(this.data.currentCategoryId), Validators.required],
-      name: ['', Validators.required],
-      capacity: [0, [Validators.required, Validators.pattern(/^\d+$/)]],
+      id: [String(this.currentCategory.id), Validators.required],
+      name: [this.currentCategory.name, Validators.required],
+      capacity: [this.currentCategory.capacity, [Validators.required, Validators.pattern(/^\d+$/)]],
+    });
+
+    this.categoryEditForm.get('id')?.valueChanges.pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((id) => {
+      const selectedCategory: EventCategoryModel = this.data.categories.find((category) => String(category.id) === id)!;
+      if (selectedCategory) {
+        this.currentCategory = selectedCategory;
+        this.categoryEditForm.patchValue({
+          name: selectedCategory.name,
+          capacity: selectedCategory.capacity,
+        });
+      }
     });
   }
 

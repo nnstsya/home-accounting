@@ -28,11 +28,11 @@ export class RecordsTableComponent implements AfterViewInit {
     }));
   }
 
-  openEditCategoryModal(categoryId: EventCategoryModel): void {
+  openEditCategoryModal(category: EventCategoryModel): void {
     this.dialog.open(EditCategoryModalComponent, {
       width: '400px',
       disableClose: true,
-      data: { categories: this.data(), currentCategoryId: categoryId }
+      data: { categories: this.data(), category: category }
     });
   }
 }
