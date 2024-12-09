@@ -38,6 +38,7 @@ import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { AddCategoryModalComponent } from './modals/add-category-modal/add-category-modal.component';
+import { EditCategoryModalComponent } from './modals/edit-category-modal/edit-category-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AddCategoryModalComponent } from './modals/add-category-modal/add-categ
     RecordsComponent,
     RecordsTableComponent,
     AddEventModalComponent,
-    AddCategoryModalComponent
+    AddCategoryModalComponent,
+    EditCategoryModalComponent
   ],
   imports: [
     LayoutModule,
