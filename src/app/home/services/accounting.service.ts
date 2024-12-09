@@ -41,12 +41,46 @@ export class AccountingService {
     );
   }
 
+  createEvent(event: EventModel): Observable<boolean> {
+    return this.http.post<boolean>('/events', event).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new event.')))
+    );
+  }
+
   getCurrentUserCategories(userId: string): Observable<EventCategoryModel[]> {
     const params: HttpParams = new HttpParams().set('userId', userId);
 
     return this.http.get<EventCategoryModel[]>('/categories', { params }).pipe(
       delay(400),
       catchError(() => throwError(() => new Error('Failed to fetch categories information.')))
+    );
+  }
+
+  getCategoryById(categoryId: string): Observable<EventCategoryModel> {
+    const params: HttpParams = new HttpParams().set('id', categoryId);
+
+    return this.http.get<EventCategoryModel[]>('/categories', { params }).pipe(
+      delay(400),
+      map(response => response[0]),
+      catchError(() => throwError(() => new Error('Failed to fetch category information.')))
+    );
+  }
+
+  createCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.post<boolean>('/categories', category).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new category.')))
+    );
+  }
+
+  editCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.put<boolean>(`/categories/${category.id}`, category).pipe(
+      catchError(() => throwError(() => new Error('Failed to edit category.')))
+    );
+  }
+
+  deleteCategory(categoryId: number): Observable<boolean> {
+    return this.http.delete<boolean>(`/categories/${categoryId}`).pipe(
+      catchError(() => throwError(() => new Error('Failed to delete category.')))
     );
   }
 
