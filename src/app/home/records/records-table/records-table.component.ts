@@ -3,6 +3,7 @@ import { EventCategoryModel } from '@home/models/event.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { EditCategoryModalComponent } from '@home/modals/edit-category-modal/edit-category-modal.component';
+import { DeleteCategoryModalComponent } from '@home/modals/delete-category-modal/delete-category-modal.component';
 
 interface IndexedData extends EventCategoryModel {
   index: number;
@@ -28,11 +29,19 @@ export class RecordsTableComponent implements AfterViewInit {
     }));
   }
 
-  openEditCategoryModal(categoryId: EventCategoryModel): void {
+  openEditCategoryModal(categoryId: number): void {
     this.dialog.open(EditCategoryModalComponent, {
       width: '400px',
       disableClose: true,
       data: { categories: this.data(), currentCategoryId: categoryId }
+    });
+  }
+
+  openDeleteCategoryModal(category: EventCategoryModel): void {
+    this.dialog.open(DeleteCategoryModalComponent, {
+      width: '400px',
+      disableClose: true,
+      data: { currentCategory: category }
     });
   }
 }
