@@ -1,0 +1,36 @@
+:host::ng-deep {
+  .mat-divider {
+    margin-block: 14px;
+    border-top-color: #c9cad5;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100vh;
+  padding: 40px;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &__heading {
+      line-height: 34px;
+      margin: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &__button {
+      border-radius: 4px;
+      width: 140px;
+    }
+  }
+}
