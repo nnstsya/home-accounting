@@ -4,6 +4,7 @@ import { EventCategoryModel } from '@home/models/event.model';
 import { AccountingService } from '@home/services/accounting.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEventModalComponent } from '@home/modals/add-event-modal/add-event-modal.component';
+import { AddCategoryModalComponent } from '@home/modals/add-category-modal/add-category-modal.component';
 
 @Component({
   selector: 'app-records',
@@ -27,6 +28,13 @@ export class RecordsComponent implements OnInit {
       width: '400px',
       disableClose: true,
       data: { categories: this.userCategories$ }
+    });
+  }
+
+  openAddCategoryModal(): void {
+    this.dialog.open(AddCategoryModalComponent, {
+      width: '400px',
+      disableClose: true,
     });
   }
 }

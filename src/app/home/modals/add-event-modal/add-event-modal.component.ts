@@ -1,17 +1,11 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AccountingService } from '@home/services/accounting.service';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
-
-interface EventFormModel{
-  type: FormControl<string>;
-  amount: FormControl<number>;
-  categoryId: FormControl<number>;
-  description: FormControl<string>;
-}
+import { EventFormModel } from '@home/models/form.model';
 
 @Component({
   selector: 'app-add-event-modal',
