@@ -18,14 +18,10 @@ export class HistoryTableComponent implements AfterViewInit {
   data: InputSignal<ExtendedEventModel[]> = input.required<ExtendedEventModel[]>();
 
   displayedColumns: string[] = ['index', 'amount', 'date', 'category', 'type', 'actions'];
-  dataSource: MatTableDataSource<IndexedData>;
+  dataSource: MatTableDataSource<IndexedData> = new MatTableDataSource();
 
   paginator: Signal<MatPaginator | undefined> = viewChild<MatPaginator>(MatPaginator);
   sort: Signal<MatSort> = viewChild.required<MatSort>(MatSort);
-
-  constructor() {
-    this.dataSource = new MatTableDataSource();
-  }
 
   ngAfterViewInit(): void {
     const dataWithIndex: IndexedData[] = this.data().map((item, index) => ({
