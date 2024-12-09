@@ -23,7 +23,7 @@
 
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef> Type </th>
-      <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.type === 'Income' ? '#3f51b5' : '#f44336'}">
+      <td mat-cell *matCellDef="let row" [ngClass]="row.type === 'Income' ? 'income-text' : 'outcome-text'">
         {{row.type}}
       </td>
     </ng-container>

@@ -17,7 +17,7 @@ import {
   MatTable
 } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
-import { AsyncPipe, DatePipe, DecimalPipe, KeyValuePipe, NgStyle } from '@angular/common';
+import { AsyncPipe, DatePipe, DecimalPipe, KeyValuePipe, NgClass } from '@angular/common';
 import { MatDivider } from '@angular/material/divider';
 import { HistoryComponent } from './history/history.component';
 import { MatButton } from '@angular/material/button';
@@ -52,8 +52,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
     MatHeaderRowDef,
     DatePipe,
     MatDivider,
-    NgStyle,
     MatButton,
+    NgClass,
     HighchartsChartModule
   ],
   providers: []
