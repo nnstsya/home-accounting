@@ -11,3 +11,9 @@ export interface CategoryFormModel {
   name: FormControl<string>;
   capacity: FormControl<number>;
 }
+
+export interface CategoryEditFormModel {
+  id: FormControl<string>;
+  name: FormControl<string>;
+  capacity: FormControl<number>;
+}
