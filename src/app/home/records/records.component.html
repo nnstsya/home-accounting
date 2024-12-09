@@ -7,7 +7,7 @@
 
   <div class="page__buttons">
     <button class="page__buttons__button" mat-flat-button (click)="openAddEventModal()">Add event</button>
-    <button class="page__buttons__button" mat-flat-button>Add category</button>
+    <button class="page__buttons__button" mat-flat-button (click)="openAddCategoryModal()">Add category</button>
   </div>
 
   @if(userCategories$ | async; as categories) {

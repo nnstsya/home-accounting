@@ -2,7 +2,7 @@
 <mat-dialog-content>
   <form [formGroup]="eventForm" class="dialog__form">
 
-    <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field>
       <mat-label>Category</mat-label>
       <mat-select formControlName="categoryId" required>
         @if (categories$ | async; as categories) {
@@ -24,7 +24,7 @@
       <mat-radio-button value="Outcome">Outcome</mat-radio-button>
     </mat-radio-group>
 
-    <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field>
       <mat-label>Amount</mat-label>
       <input matInput formControlName="amount" type="text" />
       @if(eventForm.get('amount')?.hasError('required')) {
@@ -35,7 +35,7 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field>
       <mat-label>Description</mat-label>
       <input matInput formControlName="description" />
       @if(eventForm.get('description')?.hasError('required')) {
