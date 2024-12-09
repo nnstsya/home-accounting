@@ -29,6 +29,8 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { RecordsComponent } from './records/records.component';
+import { RecordsTableComponent } from './records/records-table/records-table.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     HistoryComponent,
     HistoryTableComponent,
     HistoryChartComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    RecordsComponent,
+    RecordsTableComponent
   ],
   imports: [
     LayoutModule,
