@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { BillingService } from '@home/billing/services/billing.service';
 import { combineLatest, map, Observable, of } from 'rxjs';
-import { BillingModel, ExchangeRateModel } from '@home/billing/models/billing.model';
+import { BillingModel, ExchangeRateModel } from '@home/models/billing.model';
+import { AccountingService } from '@home/services/accounting.service';
 
 @Component({
   selector: 'app-billing',
@@ -15,7 +15,7 @@ export class BillingComponent implements OnInit {
   convertedBalance$: Observable<BillingModel[]> = of();
   exchangeRates$: Observable<ExchangeRateModel> = of();
 
-  private billingService: BillingService = inject(BillingService);
+  private accountingService: AccountingService = inject(AccountingService);
 
   ngOnInit() {
     this.getData()
@@ -28,11 +28,11 @@ export class BillingComponent implements OnInit {
   }
 
   private getUserBill(): void {
-    this.userBill$ = this.billingService.getCurrentUserBill(this.userId);
+    this.userBill$ = this.accountingService.getCurrentUserBill(this.userId);
   }
 
   private getExchangeRates(): void {
-    this.exchangeRates$ = this.billingService.getExchangeRates().pipe(
+    this.exchangeRates$ = this.accountingService.getExchangeRates().pipe(
       map((rate: ExchangeRateModel) => {
         return {...rate, rates: {
             USD: rate.rates['USD'],

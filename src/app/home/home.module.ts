@@ -17,14 +17,18 @@ import {
   MatTable
 } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
-import { AsyncPipe, DatePipe, DecimalPipe, KeyValuePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, DecimalPipe, KeyValuePipe, NgClass } from '@angular/common';
 import { MatDivider } from '@angular/material/divider';
-import { MatError } from '@angular/material/form-field';
+import { HistoryComponent } from './history/history.component';
+import { MatButton } from '@angular/material/button';
+import { HistoryTableComponent } from '@home/history/history-table/history-table.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    BillingComponent
+    BillingComponent,
+    HistoryComponent,
+    HistoryTableComponent
   ],
   imports: [
     LayoutModule,
@@ -45,7 +49,8 @@ import { MatError } from '@angular/material/form-field';
     MatHeaderRowDef,
     DatePipe,
     MatDivider,
-    MatError
+    MatButton,
+    NgClass
   ],
   providers: []
 })
