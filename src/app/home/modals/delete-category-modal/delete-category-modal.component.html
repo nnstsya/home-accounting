@@ -1,0 +1,7 @@
+<mat-dialog-content>
+  <p class="dialog__text">Confirm deleting category {{ data.currentCategory.name }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button (click)="onSubmit()" class="button">Delete</button>
+  <button mat-button (click)="onClose()" class="dialog__buttons__close button">Cancel</button>
+</mat-dialog-actions>

@@ -21,7 +21,7 @@
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password" (input)="updatePasswordCount()">
+        <input matInput formControlName="password" (input)="updatePasswordCount()" type="password">
         @if(form.get('password')!.hasError('required')) {
           <mat-error>Field is required.</mat-error>
         }

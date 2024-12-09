@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserModel } from '@auth/models/user';
+import { Router } from '@angular/router';
 
 interface link {
   url: string;
@@ -11,7 +12,7 @@ interface link {
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   user: UserModel = JSON.parse(localStorage.getItem('user')!);
   links: link[] = [
     {
@@ -27,7 +28,13 @@ export class SidebarComponent {
       title: 'Records'
     }
   ];
-  activeLink: string = this.links[0].url;
+  activeLink: string = '';
+
+  private router: Router = inject(Router);
+
+  ngOnInit() {
+    this.setActiveLink(this.router.url)
+  }
 
   setActiveLink(link: string): void {
     this.activeLink = link;
