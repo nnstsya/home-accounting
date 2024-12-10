@@ -50,6 +50,12 @@ export class AccountingService {
     );
   }
 
+  createCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.post<boolean>('/categories', category).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new category.')))
+    );
+  }
+
   deleteCategory(categoryId: string): Observable<boolean> {
     return this.http.delete<boolean>(`/categories/${categoryId}`).pipe(
       catchError(() => throwError(() => new Error('Failed to delete category.')))
