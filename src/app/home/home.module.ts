@@ -36,7 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
-import { EditCategoryModalComponent } from './modals/edit-category-modal/edit-category-modal.component';
+import { CategoryModalComponent } from './modals/category-modal/category-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { EditCategoryModalComponent } from './modals/edit-category-modal/edit-ca
     EventDetailsComponent,
     RecordsComponent,
     RecordsTableComponent,
-    EditCategoryModalComponent
+    CategoryModalComponent
   ],
   imports: [
     LayoutModule,
