@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Add category</h2>
+<mat-dialog-content>
+  <form [formGroup]="categoryEditForm" class="dialog__form">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="id" required>
+        @if (data.categories) {
+          @for (category of data.categories; track category.id) {
+            <mat-option [value]="category.id">
+              {{ category.name }}
+            </mat-option>
+          }
+        }
+      </mat-select>
+      @if(categoryEditForm.get('id')?.hasError('required')) {
+        <mat-error>Category is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" type="text" />
+      @if(categoryEditForm.get('name')?.hasError('required')) {
+        <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Capacity</mat-label>
+      <input matInput formControlName="capacity" type="text" />
+      @if(categoryEditForm.get('capacity')?.hasError('required')) {
+        <mat-error>Capacity is required</mat-error>
+      }
+      @if(categoryEditForm.get('capacity')?.hasError('pattern')) {
+        <mat-error>Only numbers are allowed</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-flat-button [disabled]="!categoryEditForm.valid" (click)="onSubmit()" class="button">Edit</button>
+  <button mat-button (click)="onClose()" class="dialog__buttons__close button">Cancel</button>
+</mat-dialog-actions>
