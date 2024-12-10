@@ -1,7 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { AccountingService } from '@home/services/accounting.service';
 import { EventCategoryModel, EventModel, ExtendedEventModel } from '@home/models/event.model';
 import { combineLatest, map, Observable, of } from 'rxjs';
+import { AddEventModalComponent } from '@home/modals/add-event-modal/add-event-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { FormGroup } from '@angular/forms';
+import { EventFormModel } from '@home/models/form.model';
+import { v4 as uuidv4 } from 'uuid';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-history',
@@ -16,6 +22,8 @@ export class HistoryComponent implements OnInit {
   userId: string = JSON.parse(localStorage.getItem('user')!).id;
 
   private accountingService: AccountingService = inject(AccountingService);
+  private dialog: MatDialog = inject(MatDialog);
+  private destroyRef: DestroyRef = inject(DestroyRef);
 
   ngOnInit() {
     this.getData()
@@ -25,6 +33,36 @@ export class HistoryComponent implements OnInit {
     this.getUserCategories();
     this.getEventsData();
     this.getExtendedEventsData();
+  }
+
+  saveEvent(formData: FormGroup<EventFormModel>) {
+    const event: EventModel = {
+      id: uuidv4(),
+      type: formData.value.type!,
+      description: formData.value.description!,
+      date: new Date().toLocaleString(),
+      userId: this.userId,
+      amount: Number(formData.value.amount),
+      categoryId: formData.value.categoryId!
+    };
+
+    this.accountingService.createEvent(event).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
+  }
+
+  openAddEventModal(): void {
+    this.dialog.open(AddEventModalComponent, {
+      width: '400px',
+      disableClose: true,
+      data: { categories: this.userCategories$ }
+    }).afterClosed().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((formData: FormGroup<EventFormModel>) => {
+      if (formData) {
+        this.saveEvent(formData);
+      }
+    });
   }
 
   private getUserCategories(): void {
@@ -42,7 +80,7 @@ export class HistoryComponent implements OnInit {
           const category: EventCategoryModel | undefined = categories.find((c: EventCategoryModel) => c.id == event.categoryId);
           return {
             ...event,
-            category: category || { id: 0, name: 'Unknown', capacity: 0, userId: 0 }
+            category: category || { id: '0', name: 'Unknown', capacity: 0, userId: '0' }
           };
         });
       })

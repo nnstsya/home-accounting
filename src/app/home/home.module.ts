@@ -25,12 +25,18 @@ import { HistoryTableComponent } from '@home/history/history-table/history-table
 import { HistoryChartComponent } from '@home/history/history-chart/history-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { RecordsComponent } from './records/records.component';
 import { RecordsTableComponent } from './records/records-table/records-table.component';
+import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,8 @@ import { RecordsTableComponent } from './records/records-table/records-table.com
     HistoryChartComponent,
     EventDetailsComponent,
     RecordsComponent,
-    RecordsTableComponent
+    RecordsTableComponent,
+    AddEventModalComponent
   ],
   imports: [
     LayoutModule,
@@ -71,7 +78,17 @@ import { RecordsTableComponent } from './records/records-table/records-table.com
     MatInput,
     MatLabel,
     MatSort,
-    MatSortHeader
+    MatSortHeader,
+    MatDialogTitle,
+    MatDialogClose,
+    ReactiveFormsModule,
+    MatRadioButton,
+    MatError,
+    MatDialogActions,
+    MatRadioGroup,
+    MatOption,
+    MatSelect,
+    MatDialogContent
   ],
   providers: []
 })
