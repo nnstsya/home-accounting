@@ -31,6 +31,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { RecordsComponent } from './records/records.component';
 import { RecordsTableComponent } from './records/records-table/records-table.component';
+import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
@@ -48,7 +49,9 @@ import { DeleteCategoryModalComponent } from './modals/delete-category-modal/del
     EventDetailsComponent,
     RecordsComponent,
     RecordsTableComponent,
-    DeleteCategoryModalComponent
+    DeleteCategoryModalComponent,
+    RecordsTableComponent,
+    AddEventModalComponent
   ],
   imports: [
     LayoutModule,
