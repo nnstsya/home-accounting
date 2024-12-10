@@ -38,6 +38,7 @@ import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { AddCategoryModalComponent } from './modals/add-category-modal/add-category-modal.component';
 import { DeleteCategoryModalComponent } from './modals/delete-category-modal/delete-category-modal.component';
+import { EditCategoryModalComponent } from './modals/edit-category-modal/edit-category-modal.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { DeleteCategoryModalComponent } from './modals/delete-category-modal/del
     EventDetailsComponent,
     RecordsComponent,
     RecordsTableComponent,
+    EditCategoryModalComponent,
     AddCategoryModalComponent,
     DeleteCategoryModalComponent
   ],

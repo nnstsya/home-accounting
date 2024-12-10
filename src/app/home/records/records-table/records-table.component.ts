@@ -6,6 +6,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AccountingService } from '@home/services/accounting.service';
 import { DeleteCategoryModalComponent } from '@home/modals/delete-category-modal/delete-category-modal.component';
 import { modalConfig } from '@home/modals/modal-config';
+import { FormGroup } from '@angular/forms';
+import { CategoryFormModel } from '@home/models/form.model';
+import { EditCategoryModalComponent } from '@home/modals/edit-category-modal/edit-category-modal.component'
 
 @Component({
   selector: 'app-records-table',
@@ -25,6 +28,32 @@ export class RecordsTableComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.data = this.data();
+  }
+
+  editCategory(formData: FormGroup<CategoryFormModel>) {
+    const category: EventCategoryModel = {
+      id: formData.value.id!,
+      name: formData.value.name!,
+      userId: this.userId,
+      capacity: Number(formData.value.capacity),
+    };
+    this.accountingService.editCategory(category).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
+  }
+
+  openEditCategoryModal(category: EventCategoryModel): void {
+    this.dialog.open(EditCategoryModalComponent, {
+      width: '400px',
+      disableClose: true,
+      data: { categories: this.data(), category: category }
+    }).afterClosed().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((formData: FormGroup<CategoryFormModel>) => {
+      if (formData) {
+        this.editCategory(formData);
+      }
+    });
   }
 
   deleteCategory(categoryId: string) {
