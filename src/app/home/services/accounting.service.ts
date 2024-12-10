@@ -50,6 +50,12 @@ export class AccountingService {
     );
   }
 
+  createCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.post<boolean>('/categories', category).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new category.')))
+    );
+  }
+
   getEventById(eventId: string): Observable<EventModel> {
     const params: HttpParams = new HttpParams().set('id', eventId);
 
