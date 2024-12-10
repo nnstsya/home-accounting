@@ -1,11 +1,11 @@
 export interface EventModel {
-  id: number;
+  id: string;
   type: string;
   amount: number;
-  categoryId: number;
+  categoryId: string;
   date: string;
   description: string;
-  userId: number;
+  userId: string;
 }
 
 export interface ExtendedEventModel extends Omit<EventModel, 'categoryId'> {
@@ -13,8 +13,8 @@ export interface ExtendedEventModel extends Omit<EventModel, 'categoryId'> {
 }
 
 export interface EventCategoryModel {
-  id: number;
+  id: string;
   name: string;
   capacity: number;
-  userId: number;
+  userId: string;
 }

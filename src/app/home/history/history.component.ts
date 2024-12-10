@@ -42,7 +42,7 @@ export class HistoryComponent implements OnInit {
           const category: EventCategoryModel | undefined = categories.find((c: EventCategoryModel) => c.id == event.categoryId);
           return {
             ...event,
-            category: category || { id: 0, name: 'Unknown', capacity: 0, userId: 0 }
+            category: category || { id: '0', name: 'Unknown', capacity: 0, userId: '0' }
           };
         });
       })

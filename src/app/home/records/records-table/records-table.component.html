@@ -20,7 +20,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let row" class="table__actions-row">
         <mat-icon class="table__actions-row__edit-icon button">edit</mat-icon>
-        <mat-icon class="button">delete</mat-icon>
+        <mat-icon class="button" (click)="openDeleteCategoryModal(row.id, row.name)">delete</mat-icon>
       </td>
     </ng-container>
 
