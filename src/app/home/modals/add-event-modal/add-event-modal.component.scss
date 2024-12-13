@@ -1,0 +1,28 @@
+:host {
+  ::ng-deep {
+    .mdc-label {
+      font-size: 16px;
+    }
+  }
+}
+
+.dialog {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 12px;
+
+    &__radio-buttons {
+      display: flex;
+    }
+  }
+
+  &__buttons__close {
+    color: #424242;
+  }
+}
+
+.button {
+  border-radius: 4px;
+}
