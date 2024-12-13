@@ -8,6 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { v4 as uuidv4 } from 'uuid';
 import { EventFormModel } from '@home/models/form.model';
 import { FormGroup } from '@angular/forms';
+import * as modalConfig from '@home/modals/modalСonfig.json';
 
 @Component({
   selector: 'app-records',
@@ -28,32 +29,29 @@ export class RecordsComponent implements OnInit {
   }
 
   saveEvent(formData: FormGroup<EventFormModel>) {
-    const event: EventModel = {
-      id: uuidv4(),
-      type: formData.value.type!,
-      description: formData.value.description!,
-      date: new Date().toLocaleString(),
-      userId: this.userId,
-      amount: Number(formData.value.amount),
-      categoryId: formData.value.categoryId!
-    };
+    if (formData.value) {
+      const event: EventModel = {
+        ...formData.getRawValue(),
+        id: uuidv4(),
+        date: new Date().toLocaleString(),
+        userId: this.userId,
+        amount: Number(formData.value.amount),
+      };
 
-    this.accountingService.createEvent(event).pipe(
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe();
+      this.accountingService.createEvent(event).pipe(
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe();
+    }
   }
 
   openAddEventModal(): void {
     this.dialog.open(AddEventModalComponent, {
-      width: '400px',
-      disableClose: true,
+      ...modalConfig,
       data: {categories: this.userCategories$}
     }).afterClosed().pipe(
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((formData: FormGroup<EventFormModel>) => {
-      if (formData) {
-        this.saveEvent(formData);
-      }
+      this.saveEvent(formData);
     });
   }
 }
