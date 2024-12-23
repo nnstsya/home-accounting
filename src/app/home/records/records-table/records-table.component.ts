@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AccountingService } from '@home/services/accounting.service';
 import { DeleteCategoryModalComponent } from '@home/modals/delete-category-modal/delete-category-modal.component';
+import { modalConfig } from '@home/modals/modal-config';
 
 @Component({
   selector: 'app-records-table',
@@ -34,8 +35,7 @@ export class RecordsTableComponent implements AfterViewInit {
 
   openDeleteCategoryModal(categoryId: string, categoryName: string): void {
     this.dialog.open(DeleteCategoryModalComponent, {
-      width: '400px',
-      disableClose: true,
+      ...modalConfig,
       data: { currentCategory: categoryName }
     }).afterClosed().pipe(
       takeUntilDestroyed(this.destroyRef)
