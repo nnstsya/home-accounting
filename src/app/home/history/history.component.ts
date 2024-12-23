@@ -48,7 +48,9 @@ export class HistoryComponent implements OnInit {
 
       this.accountingService.createEvent(event).pipe(
         takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
+      ).subscribe(() => {
+        this.getData();
+      });
     }
   }
 
