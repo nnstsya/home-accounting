@@ -24,6 +24,12 @@ export class AccountingService {
     );
   }
 
+  updateUserBill(updatedBilling: BillingModel): Observable<boolean> {
+   return this.http.put<boolean>(`/bill/${updatedBilling.id}`, updatedBilling).pipe(
+      catchError(() => throwError(() => new Error('Failed to update billing information.')))
+    );
+  }
+
   getExchangeRates(): Observable<ExchangeRateModel> {
     const params: HttpParams = new HttpParams().set('apikey', this.API_KEY);
 

@@ -49,17 +49,16 @@ export class BillingComponent implements OnInit {
       map(([rates, bill]: [ExchangeRateModel, BillingModel]) => {
         return [
           {
-            userId: bill.userId,
+            ...bill,
             currency: '€',
-            value: bill.value
           },
           {
-            userId: bill.userId,
+            ...bill,
             currency: '$',
             value: bill.value * rates.rates['USD']
           },
           {
-            userId: bill.userId,
+            ...bill,
             currency: '₴',
             value: bill.value * rates.rates['UAH']
           }

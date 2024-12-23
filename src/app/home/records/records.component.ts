@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 import { AccountingService } from '@home/services/accounting.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { EventFormModel } from '@home/models/form.model';
 import { FormGroup } from '@angular/forms';
 import { modalConfig } from '@home/modals/modal-config';
+import { BillingModel } from '@home/models/billing.model';
 
 @Component({
   selector: 'app-records',
@@ -29,7 +30,7 @@ export class RecordsComponent implements OnInit {
   }
 
   saveEvent(formData: FormGroup<EventFormModel>) {
-    if (formData.value) {
+    if (formData.valid) {
       const event: EventModel = {
         ...formData.getRawValue(),
         id: uuidv4(),
@@ -38,10 +39,28 @@ export class RecordsComponent implements OnInit {
         amount: Number(formData.value.amount),
       };
 
+      const updateBalance = event.type === 'Income'
+        ? event.amount
+        : -event.amount;
+
       this.accountingService.createEvent(event).pipe(
         takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
+      ).subscribe(() => {
+        this.updateUserBalance(updateBalance);
+      });
     }
+  }
+
+  updateUserBalance(amount: number): void {
+    this.accountingService.getCurrentUserBill(this.userId).pipe(
+      switchMap((bill: BillingModel) => {
+        const updatedBalance = bill.value + amount;
+        const updatedBilling = { ...bill, value: updatedBalance };
+
+        return this.accountingService.updateUserBill(updatedBilling);
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
   }
 
   openAddEventModal(): void {
