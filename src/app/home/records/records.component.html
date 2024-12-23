@@ -5,14 +5,14 @@
 
   <mat-divider></mat-divider>
 
-  <div class="page__buttons">
-    <button class="page__buttons__button" mat-flat-button>Add event</button>
-    <button class="page__buttons__button" mat-flat-button>Add category</button>
-  </div>
-
   @if(userCategories$ | async; as categories) {
+    <div class="page__buttons">
+      <button class="page__buttons__button" mat-flat-button>Add event</button>
+      <button class="page__buttons__button" mat-flat-button>Add category</button>
+    </div>
+
     <app-records-table [data]="categories"></app-records-table>
   } @else {
-    <p>Loading...</p>
+    <p class="page__loader">Loading...</p>
   }
 </div>
