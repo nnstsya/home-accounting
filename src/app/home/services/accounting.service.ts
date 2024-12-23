@@ -50,6 +50,12 @@ export class AccountingService {
     );
   }
 
+  deleteCategory(categoryId: string): Observable<boolean> {
+    return this.http.delete<boolean>(`/categories/${categoryId}`).pipe(
+      catchError(() => throwError(() => new Error('Failed to delete category.')))
+    );
+  }
+
   getEventById(eventId: string): Observable<EventModel> {
     const params: HttpParams = new HttpParams().set('id', eventId);
 
