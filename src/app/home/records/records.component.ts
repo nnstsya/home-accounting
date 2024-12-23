@@ -8,7 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { v4 as uuidv4 } from 'uuid';
 import { EventFormModel } from '@home/models/form.model';
 import { FormGroup } from '@angular/forms';
-import * as modalConfig from '@home/modals/modalСonfig.json';
+import { modalConfig } from '@home/modals/modal-config';
 
 @Component({
   selector: 'app-records',

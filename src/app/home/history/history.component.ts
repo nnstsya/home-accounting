@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 import { EventFormModel } from '@home/models/form.model';
 import { v4 as uuidv4 } from 'uuid';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import * as modalConfig from '@home/modals/modalСonfig.json';
+import { modalConfig } from '@home/modals/modal-config';
 
 @Component({
   selector: 'app-history',
