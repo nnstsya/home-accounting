@@ -8,6 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { v4 as uuidv4 } from 'uuid';
 import { CategoryFormModel } from '@home/models/form.model';
 import { FormGroup } from '@angular/forms';
+import { modalConfig } from '@home/modals/modal-config';
 
 @Component({
   selector: 'app-records',
@@ -28,28 +29,26 @@ export class RecordsComponent implements OnInit {
   }
 
   saveCategory(formData: FormGroup<CategoryFormModel>) {
-    const category: EventCategoryModel = {
-      id: uuidv4(),
-      name: formData.value.name!,
-      capacity: formData.value.capacity!,
-      userId: this.userId,
-    };
+    if (formData.value) {
+      const category: EventCategoryModel = {
+        ...formData.getRawValue(),
+        id: uuidv4(),
+        userId: this.userId,
+      };
 
-    this.accountingService.createCategory(category).pipe(
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe();
+      this.accountingService.createCategory(category).pipe(
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe();
+      }
   }
 
   openAddCategoryModal(): void {
     this.dialog.open(AddCategoryModalComponent, {
-      width: '400px',
-      disableClose: true,
+      ...modalConfig,
     }).afterClosed().pipe(
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((formData: FormGroup<CategoryFormModel>) => {
-      if (formData) {
-        this.saveCategory(formData);
-      }
+      this.saveCategory(formData);
     });
   }
 }

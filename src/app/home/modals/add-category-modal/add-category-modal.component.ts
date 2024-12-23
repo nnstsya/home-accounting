@@ -10,7 +10,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddCategoryModalComponent {
   categoryForm: FormGroup<CategoryFormModel>;
-  userId: string = JSON.parse(localStorage.getItem('user')!).id;
 
   private dialogRef: MatDialogRef<AddCategoryModalComponent> = inject(MatDialogRef);
   private fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
