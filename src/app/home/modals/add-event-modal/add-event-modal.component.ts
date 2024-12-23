@@ -14,7 +14,6 @@ export class AddEventModalComponent {
   categories$: Observable<EventCategoryModel[]>;
 
   eventForm: FormGroup<EventFormModel>;
-  userId: string = JSON.parse(localStorage.getItem('user')!).id;
 
   private dialogRef: MatDialogRef<AddEventModalComponent> = inject(MatDialogRef);
   private fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
