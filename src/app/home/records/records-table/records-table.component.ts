@@ -30,6 +30,14 @@ export class RecordsTableComponent implements AfterViewInit {
     this.dataSource.data = this.data();
   }
 
+  refreshTableData(): void {
+    this.accountingService.getCurrentUserCategories(this.userId).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((categories: EventCategoryModel[]) => {
+      this.dataSource.data = categories;
+    });
+  }
+
   editCategory(formData: FormGroup<CategoryFormModel>) {
     if (formData) {
       const category: EventCategoryModel = {
@@ -39,14 +47,18 @@ export class RecordsTableComponent implements AfterViewInit {
 
       this.accountingService.editCategory(category).pipe(
         takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
+      ).subscribe(() => {
+        this.refreshTableData();
+      });
     }
   }
 
   deleteCategory(categoryId: string) {
     this.accountingService.deleteCategory(categoryId).pipe(
       takeUntilDestroyed(this.destroyRef)
-    ).subscribe();
+    ).subscribe(() => {
+      this.refreshTableData();
+    });
   }
 
   openEditCategoryModal(category: EventCategoryModel): void {
