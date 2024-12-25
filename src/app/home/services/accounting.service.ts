@@ -53,6 +53,12 @@ export class AccountingService {
     );
   }
 
+  createEvent(event: EventModel): Observable<boolean> {
+    return this.http.post<boolean>('/events', event).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new event.')))
+    );
+  }
+
   getCurrentUserCategories(userId: string): Observable<EventCategoryModel[]> {
     const params: HttpParams = new HttpParams().set('userId', userId);
 
@@ -65,6 +71,16 @@ export class AccountingService {
   deleteCategory(categoryId: string): Observable<boolean> {
     return this.http.delete<boolean>(`/categories/${categoryId}`).pipe(
       catchError(() => throwError(() => new Error('Failed to delete category.')))
+    );
+  }
+
+  getCategoryById(categoryId: string): Observable<EventCategoryModel> {
+    const params: HttpParams = new HttpParams().set('id', categoryId);
+
+    return this.http.get<EventCategoryModel[]>('/categories', { params }).pipe(
+      delay(400),
+      map(response => response[0]),
+      catchError(() => throwError(() => new Error('Failed to fetch category information.')))
     );
   }
 

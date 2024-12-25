@@ -11,7 +11,7 @@
 
     <mat-divider></mat-divider>
 
-    <button class="add-event-button" mat-flat-button>Add new event</button>
+    <button class="add-event-button" mat-flat-button (click)="openAddEventModal()">Add new event</button>
   } @else {
     <p class="page__loader">Loading...</p>
   }

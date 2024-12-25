@@ -21,6 +21,10 @@ const routes: Routes = [
         component: HistoryComponent
       },
       {
+        path: 'event/:index/:id',
+        component: EventDetailsComponent
+      },
+      {
         path: 'records',
         component: RecordsComponent
       },

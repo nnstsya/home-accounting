@@ -37,6 +37,7 @@ import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { DeleteCategoryModalComponent } from './modals/delete-category-modal/delete-category-modal.component';
+import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { DeleteCategoryModalComponent } from './modals/delete-category-modal/del
     EventDetailsComponent,
     RecordsComponent,
     RecordsTableComponent,
+    AddEventModalComponent,
     DeleteCategoryModalComponent
   ],
   imports: [
