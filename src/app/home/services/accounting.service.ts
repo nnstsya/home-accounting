@@ -84,16 +84,6 @@ export class AccountingService {
     );
   }
 
-  getCategoryById(categoryId: string): Observable<EventCategoryModel> {
-    const params: HttpParams = new HttpParams().set('id', categoryId);
-
-    return this.http.get<EventCategoryModel[]>('/categories', { params }).pipe(
-      delay(400),
-      map(response => response[0]),
-      catchError(() => throwError(() => new Error('Failed to fetch category information.')))
-    );
-  }
-
   createCategory(category: EventCategoryModel): Observable<boolean> {
     return this.http.post<boolean>('/categories', category).pipe(
       catchError(() => throwError(() => new Error('Failed to create new category.')))

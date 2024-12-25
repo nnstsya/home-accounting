@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { AccountingService } from '@home/services/accounting.service';
 import { EventCategoryModel, EventModel, ExtendedEventModel } from '@home/models/event.model';
 import { combineLatest, map, Observable, of } from 'rxjs';
