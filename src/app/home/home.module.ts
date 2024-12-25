@@ -50,6 +50,7 @@ import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal
     EventDetailsComponent,
     RecordsComponent,
     RecordsTableComponent,
+    DeleteCategoryModalComponent,
     AddEventModalComponent,
     DeleteCategoryModalComponent,
     AddCategoryModalComponent

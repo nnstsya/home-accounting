@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AccountingService } from '@home/services/accounting.service';
 import { EventCategoryModel, EventModel, ExtendedEventModel } from '@home/models/event.model';
 import { combineLatest, map, Observable, of } from 'rxjs';
@@ -48,7 +48,9 @@ export class HistoryComponent implements OnInit {
 
       this.accountingService.createEvent(event).pipe(
         takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
+      ).subscribe(() => {
+        this.getData();
+      });
     }
   }
 
