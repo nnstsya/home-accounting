@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { combineLatest, map, Observable, of } from 'rxjs';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { catchError, combineLatest, map, Observable, of } from 'rxjs';
 import { BillingModel, ExchangeRateModel } from '@home/models/billing.model';
 import { AccountingService } from '@home/services/accounting.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-billing',
@@ -16,6 +17,7 @@ export class BillingComponent implements OnInit {
   exchangeRates$: Observable<ExchangeRateModel> = of();
 
   private accountingService: AccountingService = inject(AccountingService);
+  private destroyRef: DestroyRef = inject(DestroyRef);
 
   ngOnInit() {
     this.getData()
@@ -40,13 +42,18 @@ export class BillingComponent implements OnInit {
             EUR: rate.rates['EUR']
           }
         }
-      })
+      }),
+      catchError(() => this.accountingService.getBackupExchangeRates())
     );
   }
 
   private getConvertedBalance(): void {
     this.convertedBalance$ = combineLatest([this.exchangeRates$, this.userBill$]).pipe(
       map(([rates, bill]: [ExchangeRateModel, BillingModel]) => {
+        this.accountingService.updateExchangeRates(rates).pipe(
+          takeUntilDestroyed(this.destroyRef)
+        ).subscribe();
+
         return [
           {
             userId: bill.userId,

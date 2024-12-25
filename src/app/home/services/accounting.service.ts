@@ -32,6 +32,18 @@ export class AccountingService {
     );
   }
 
+  updateExchangeRates(rates: ExchangeRateModel): Observable<boolean> {
+    return this.http.put<boolean>('/currency', rates).pipe(
+      catchError(() => throwError(() => new Error('Failed to update exchange rates.')))
+    );
+  }
+
+  getBackupExchangeRates(): Observable<ExchangeRateModel> {
+    return this.http.get<ExchangeRateModel>('/currency').pipe(
+      catchError(() => throwError(() => new Error('Failed to fetch backup exchange rates.')))
+    );
+  }
+
   getCurrentUserEvents(userId: string): Observable<EventModel[]> {
     const params: HttpParams = new HttpParams().set('userId', userId);
 
