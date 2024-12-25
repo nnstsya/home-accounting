@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { delay, map, Observable, throwError } from 'rxjs';
 import { BillingModel, ExchangeRateModel } from '@home/models/billing.model';
 import { catchError } from 'rxjs/operators';
-import { environment } from '@environments/environment';
+import { environment } from '@environments/environment.development';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 
 @Injectable({
