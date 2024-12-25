@@ -8,7 +8,7 @@
   @if(userCategories$ | async; as categories) {
     <div class="page__buttons">
       <button class="page__buttons__button" mat-flat-button (click)="openAddEventModal()">Add event</button>
-      <button class="page__buttons__button" mat-flat-button>Add category</button>
+      <button class="page__buttons__button" mat-flat-button (click)="openAddCategoryModal()">Add category</button>
     </div>
 
     <app-records-table [data]="categories"></app-records-table>

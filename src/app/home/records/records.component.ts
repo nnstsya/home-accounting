@@ -2,10 +2,12 @@ import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 import { AccountingService } from '@home/services/accounting.service';
-import { MatDialog } from '@angular/material/dialog';
 import { AddEventModalComponent } from '@home/modals/add-event-modal/add-event-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AddCategoryModalComponent } from '@home/modals/add-category-modal/add-category-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { v4 as uuidv4 } from 'uuid';
+import { CategoryFormModel } from '@home/models/form.model';
 import { EventFormModel } from '@home/models/form.model';
 import { FormGroup } from '@angular/forms';
 import { modalConfig } from '@home/modals/modal-config';
@@ -52,6 +54,30 @@ export class RecordsComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((formData: FormGroup<EventFormModel>) => {
       this.saveEvent(formData);
+    });
+  }
+
+  saveCategory(formData: FormGroup<CategoryFormModel>) {
+    if (formData.value) {
+      const category: EventCategoryModel = {
+        ...formData.getRawValue(),
+        id: uuidv4(),
+        userId: this.userId,
+      };
+
+      this.accountingService.createCategory(category).pipe(
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe();
+      }
+  }
+
+  openAddCategoryModal(): void {
+    this.dialog.open(AddCategoryModalComponent, {
+      ...modalConfig,
+    }).afterClosed().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((formData: FormGroup<CategoryFormModel>) => {
+      this.saveCategory(formData);
     });
   }
 }
