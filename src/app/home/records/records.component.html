@@ -11,7 +11,7 @@
   </div>
 
   @if(userCategories$ | async; as categories) {
-    <app-records-table [data]="categories"></app-records-table>
+    <app-records-table [data]="categories" (loadCategories)="loadCategories()"></app-records-table>
   } @else {
     <p>Loading...</p>
   }

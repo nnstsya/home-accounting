@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, DestroyRef, inject, input, InputSignal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DestroyRef,
+  inject,
+  input,
+  InputSignal,
+  output,
+  OutputEmitterRef
+} from '@angular/core';
 import { EventCategoryModel } from '@home/models/event.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,6 +25,7 @@ import { CategoryFormModel } from '@home/models/form.model';
   styleUrl: './records-table.component.scss'
 })
 export class RecordsTableComponent implements AfterViewInit {
+  loadCategories: OutputEmitterRef<void> = output<void>();
   data: InputSignal<EventCategoryModel[]> = input.required<EventCategoryModel[]>();
 
   displayedColumns: string[] = ['index', 'category', 'capacity', 'actions'];
@@ -31,11 +41,7 @@ export class RecordsTableComponent implements AfterViewInit {
   }
 
   refreshTableData(): void {
-    this.accountingService.getCurrentUserCategories(this.userId).pipe(
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe((categories: EventCategoryModel[]) => {
-      this.dataSource.data = categories;
-    });
+    this.loadCategories.emit();
   }
 
   editCategory(formData: FormGroup<CategoryFormModel>) {
