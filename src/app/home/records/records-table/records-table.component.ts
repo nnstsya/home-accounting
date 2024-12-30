@@ -1,14 +1,23 @@
-import { AfterViewInit, Component, DestroyRef, inject, input, InputSignal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DestroyRef,
+  inject,
+  input,
+  InputSignal,
+  output,
+  OutputEmitterRef
+} from '@angular/core';
 import { EventCategoryModel } from '@home/models/event.model';
 import { MatTableDataSource } from '@angular/material/table';
-import { DeleteCategoryModalComponent } from '@home/modals/delete-category-modal/delete-category-modal.component';
-import { modalConfig } from '@home/modals/modal-config';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryModalComponent } from '@home/modals/category-modal/category-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AccountingService } from '@home/services/accounting.service';
+import { modalConfig } from '@home/modals/modal-config';
+import { DeleteCategoryModalComponent } from '@home/modals/delete-category-modal/delete-category-modal.component';
 import { FormGroup } from '@angular/forms';
 import { CategoryFormModel } from '@home/models/form.model';
-import { AccountingService } from '@home/services/accounting.service';
 
 @Component({
   selector: 'app-records-table',
@@ -16,6 +25,7 @@ import { AccountingService } from '@home/services/accounting.service';
   styleUrl: './records-table.component.scss'
 })
 export class RecordsTableComponent implements AfterViewInit {
+  loadCategories: OutputEmitterRef<void> = output<void>();
   data: InputSignal<EventCategoryModel[]> = input.required<EventCategoryModel[]>();
 
   displayedColumns: string[] = ['index', 'category', 'capacity', 'actions'];
@@ -30,6 +40,10 @@ export class RecordsTableComponent implements AfterViewInit {
     this.dataSource.data = this.data();
   }
 
+  refreshTableData(): void {
+    this.loadCategories.emit();
+  }
+
   editCategory(formData: FormGroup<CategoryFormModel>) {
     if (formData) {
       const category: EventCategoryModel = {
@@ -39,8 +53,18 @@ export class RecordsTableComponent implements AfterViewInit {
 
       this.accountingService.editCategory(category).pipe(
         takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
+      ).subscribe(() => {
+        this.refreshTableData();
+      });
     }
+  }
+
+  deleteCategory(categoryId: string) {
+    this.accountingService.deleteCategory(categoryId).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(() => {
+      this.refreshTableData();
+    });
   }
 
   openEditCategoryModal(category: EventCategoryModel): void {
@@ -52,12 +76,6 @@ export class RecordsTableComponent implements AfterViewInit {
     ).subscribe((formData: FormGroup<CategoryFormModel>) => {
       this.editCategory(formData);
     });
-  }
-
-  deleteCategory(categoryId: string) {
-    this.accountingService.deleteCategory(categoryId).pipe(
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe();
   }
 
   openDeleteCategoryModal(categoryId: string, categoryName: string): void {

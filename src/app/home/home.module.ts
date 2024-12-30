@@ -37,8 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
-import { DeleteCategoryModalComponent } from './modals/delete-category-modal/delete-category-modal.component';
 import { CategoryModalComponent } from './modals/category-modal/category-modal.component';
+import { DeleteCategoryModalComponent } from './modals/delete-category-modal/delete-category-modal.component';
 
 @NgModule({
   declarations: [

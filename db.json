@@ -172,7 +172,7 @@
       "id": "7",
       "type": "Income",
       "amount": 1000,
-      "categoryId": null,
+      "categoryId": "7",
       "date": "20.07.2019 16:45:00",
       "description": "Received cashback from entertainment subscriptions",
       "userId": "2"

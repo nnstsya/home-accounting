@@ -28,6 +28,10 @@ export class RecordsComponent implements OnInit {
   private destroyRef: DestroyRef = inject(DestroyRef);
 
   ngOnInit() {
+    this.loadCategories();
+  }
+
+  loadCategories() {
     this.userCategories$ = this.accountingService.getCurrentUserCategories(this.userId);
   }
 
@@ -86,7 +90,9 @@ export class RecordsComponent implements OnInit {
 
       this.accountingService.createCategory(category).pipe(
         takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
+      ).subscribe(() => {
+        this.loadCategories();
+      });
     }
   }
 
