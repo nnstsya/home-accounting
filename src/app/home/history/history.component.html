@@ -8,12 +8,11 @@
   @if(extendedEventsData$ | async; as extendedEventsData) {
     <app-history-chart [data]="extendedEventsData"></app-history-chart>
     <app-history-table [data]="extendedEventsData"></app-history-table>
-
-    <mat-divider></mat-divider>
-
-    <button class="add-event-button" mat-flat-button (click)="openAddEventModal()">Add new event</button>
   } @else {
-    <p class="page__loader">Loading...</p>
+    <p>Loading...</p>
   }
 
+  <mat-divider></mat-divider>
+
+  <button class="add-event-button" mat-flat-button (click)="openAddEventModal()">Add new event</button>
 </div>

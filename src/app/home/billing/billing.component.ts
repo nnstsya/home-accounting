@@ -56,17 +56,16 @@ export class BillingComponent implements OnInit {
 
         return [
           {
-            userId: bill.userId,
+            ...bill,
             currency: '€',
-            value: bill.value
           },
           {
-            userId: bill.userId,
+            ...bill,
             currency: '$',
             value: bill.value * rates.rates['USD']
           },
           {
-            userId: bill.userId,
+            ...bill,
             currency: '₴',
             value: bill.value * rates.rates['UAH']
           }

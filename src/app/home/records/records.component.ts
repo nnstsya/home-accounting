@@ -1,7 +1,8 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 import { AccountingService } from '@home/services/accounting.service';
+import { BillingModel } from '@home/models/billing.model';
 import { AddEventModalComponent } from '@home/modals/add-event-modal/add-event-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -40,10 +41,28 @@ export class RecordsComponent implements OnInit {
         amount: Number(formData.value.amount),
       };
 
+      const updateBalance = event.type === 'Income'
+        ? event.amount
+        : -event.amount;
+
       this.accountingService.createEvent(event).pipe(
         takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
+      ).subscribe(() => {
+        this.updateUserBalance(updateBalance);
+      });
     }
+  }
+
+  updateUserBalance(amount: number): void {
+    this.accountingService.getCurrentUserBill(this.userId).pipe(
+      switchMap((bill: BillingModel) => {
+        const updatedBalance = bill.value + amount;
+        const updatedBilling = { ...bill, value: updatedBalance };
+
+        return this.accountingService.updateUserBill(updatedBilling);
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
   }
 
   openAddEventModal(): void {

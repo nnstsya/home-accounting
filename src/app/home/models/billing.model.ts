@@ -1,4 +1,5 @@
 export interface BillingModel {
+  id: string;
   value: number;
   currency: string;
   userId: number;
