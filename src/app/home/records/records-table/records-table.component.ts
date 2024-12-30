@@ -1,14 +1,11 @@
 import { AfterViewInit, Component, DestroyRef, inject, input, InputSignal } from '@angular/core';
 import { EventCategoryModel } from '@home/models/event.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AccountingService } from '@home/services/accounting.service';
 import { DeleteCategoryModalComponent } from '@home/modals/delete-category-modal/delete-category-modal.component';
 import { modalConfig } from '@home/modals/modal-config';
-import { MatDialog } from '@angular/material/dialog';
-import { CategoryModalComponent } from '@home/modals/category-modal/category-modal.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormGroup } from '@angular/forms';
-import { CategoryFormModel } from '@home/models/form.model';
-import { AccountingService } from '@home/services/accounting.service';
 
 @Component({
   selector: 'app-records-table',
@@ -46,30 +43,6 @@ export class RecordsTableComponent implements AfterViewInit {
       if (result) {
         this.deleteCategory(categoryId);
       }
-    });
-  }
-
-  editCategory(formData: FormGroup<CategoryFormModel>) {
-    if (formData) {
-      const category: EventCategoryModel = {
-        ...formData.getRawValue(),
-        userId: this.userId,
-      };
-
-      this.accountingService.editCategory(category).pipe(
-        takeUntilDestroyed(this.destroyRef)
-      ).subscribe();
-    }
-  }
-
-  openEditCategoryModal(category: EventCategoryModel): void {
-    this.dialog.open(CategoryModalComponent, {
-      ...modalConfig,
-      data: { categories: this.data(), category: category }
-    }).afterClosed().pipe(
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe((formData: FormGroup<CategoryFormModel>) => {
-      this.editCategory(formData);
     });
   }
 }

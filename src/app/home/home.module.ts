@@ -31,6 +31,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { RecordsComponent } from './records/records.component';
 import { RecordsTableComponent } from './records/records-table/records-table.component';
+import { AddCategoryModalComponent } from './modals/add-category-modal/add-category-modal.component';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
@@ -38,7 +39,6 @@ import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { DeleteCategoryModalComponent } from './modals/delete-category-modal/delete-category-modal.component';
 import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
-import { CategoryModalComponent } from './modals/category-modal/category-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,10 +50,10 @@ import { CategoryModalComponent } from './modals/category-modal/category-modal.c
     EventDetailsComponent,
     RecordsComponent,
     RecordsTableComponent,
-    CategoryModalComponent,
     DeleteCategoryModalComponent,
     AddEventModalComponent,
-    DeleteCategoryModalComponent
+    DeleteCategoryModalComponent,
+    AddCategoryModalComponent
   ],
   imports: [
     LayoutModule,
