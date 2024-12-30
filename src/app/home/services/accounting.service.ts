@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { delay, map, Observable, throwError } from 'rxjs';
 import { BillingModel, ExchangeRateModel } from '@home/models/billing.model';
 import { catchError } from 'rxjs/operators';
-import { environment } from '@environments/environment';
+import { environment } from '@environments/environment.development';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 
 @Injectable({
@@ -24,11 +24,29 @@ export class AccountingService {
     );
   }
 
+  updateUserBill(updatedBilling: BillingModel): Observable<boolean> {
+   return this.http.put<boolean>(`/bill/${updatedBilling.id}`, updatedBilling).pipe(
+      catchError(() => throwError(() => new Error('Failed to update billing information.')))
+    );
+  }
+
   getExchangeRates(): Observable<ExchangeRateModel> {
     const params: HttpParams = new HttpParams().set('apikey', this.API_KEY);
 
     return this.http.get<ExchangeRateModel>(this.API_URL, { params }).pipe(
       catchError(() => throwError(() => new Error('Failed to fetch exchange rates.')))
+    );
+  }
+
+  updateExchangeRates(rates: ExchangeRateModel): Observable<boolean> {
+    return this.http.put<boolean>('/currency', rates).pipe(
+      catchError(() => throwError(() => new Error('Failed to update exchange rates.')))
+    );
+  }
+
+  getBackupExchangeRates(): Observable<ExchangeRateModel> {
+    return this.http.get<ExchangeRateModel>('/currency').pipe(
+      catchError(() => throwError(() => new Error('Failed to fetch backup exchange rates.')))
     );
   }
 
@@ -38,6 +56,12 @@ export class AccountingService {
     return this.http.get<EventModel[]>('/events', { params }).pipe(
       delay(400),
       catchError(() => throwError(() => new Error('Failed to fetch history information.')))
+    );
+  }
+
+  createEvent(event: EventModel): Observable<boolean> {
+    return this.http.post<boolean>('/events', event).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new event.')))
     );
   }
 
@@ -59,6 +83,16 @@ export class AccountingService {
   createCategory(category: EventCategoryModel): Observable<boolean> {
     return this.http.post<boolean>('/categories', category).pipe(
       catchError(() => throwError(() => new Error('Failed to create new category.')))
+    );
+  }
+
+  getCategoryById(categoryId: string): Observable<EventCategoryModel> {
+    const params: HttpParams = new HttpParams().set('id', categoryId);
+
+    return this.http.get<EventCategoryModel[]>('/categories', { params }).pipe(
+      delay(400),
+      map(response => response[0]),
+      catchError(() => throwError(() => new Error('Failed to fetch category information.')))
     );
   }
 

@@ -5,6 +5,7 @@ import { HomeComponent } from '@home/home.component';
 import { BillingComponent } from '@home/billing/billing.component';
 import { HistoryComponent } from '@home/history/history.component';
 import { RecordsComponent } from '@home/records/records.component';
+import { EventDetailsComponent } from '@home/event-details/event-details.component';
 
 const routes: Routes = [
   {
@@ -20,8 +21,16 @@ const routes: Routes = [
         component: HistoryComponent
       },
       {
+        path: 'event/:index/:id',
+        component: EventDetailsComponent
+      },
+      {
         path: 'records',
         component: RecordsComponent
+      },
+      {
+        path: 'event/:index/:id',
+        component: EventDetailsComponent
       },
       {
         path: '**',
