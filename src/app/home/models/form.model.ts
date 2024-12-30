@@ -6,3 +6,9 @@ export interface EventFormModel {
   categoryId: FormControl<string>;
   description: FormControl<string>;
 }
+
+export interface CategoryFormModel {
+  id: FormControl<string>;
+  name: FormControl<string>;
+  capacity: FormControl<number>;
+}

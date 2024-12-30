@@ -38,7 +38,7 @@ export class HistoryComponent implements OnInit {
   }
 
   saveEvent(formData: FormGroup<EventFormModel>) {
-    if (formData.valid) {
+    if (formData.value) {
       const event: EventModel = {
         ...formData.getRawValue(),
         id: uuidv4(),
@@ -54,6 +54,7 @@ export class HistoryComponent implements OnInit {
       this.accountingService.createEvent(event).pipe(
         takeUntilDestroyed(this.destroyRef)
       ).subscribe(() => {
+        this.getData();
         this.updateUserBalance(updateBalance);
       });
     }

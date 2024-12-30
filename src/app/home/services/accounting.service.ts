@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { delay, map, Observable, throwError } from 'rxjs';
 import { BillingModel, ExchangeRateModel } from '@home/models/billing.model';
 import { catchError } from 'rxjs/operators';
-import { environment } from '@environments/environment';
+import { environment } from '@environments/environment.development';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 
 @Injectable({
@@ -38,6 +38,18 @@ export class AccountingService {
     );
   }
 
+  updateExchangeRates(rates: ExchangeRateModel): Observable<boolean> {
+    return this.http.put<boolean>('/currency', rates).pipe(
+      catchError(() => throwError(() => new Error('Failed to update exchange rates.')))
+    );
+  }
+
+  getBackupExchangeRates(): Observable<ExchangeRateModel> {
+    return this.http.get<ExchangeRateModel>('/currency').pipe(
+      catchError(() => throwError(() => new Error('Failed to fetch backup exchange rates.')))
+    );
+  }
+
   getCurrentUserEvents(userId: string): Observable<EventModel[]> {
     const params: HttpParams = new HttpParams().set('userId', userId);
 
@@ -59,6 +71,18 @@ export class AccountingService {
     return this.http.get<EventCategoryModel[]>('/categories', { params }).pipe(
       delay(400),
       catchError(() => throwError(() => new Error('Failed to fetch categories information.')))
+    );
+  }
+
+  editCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.put<boolean>(`/categories/${category.id}`, category).pipe(
+      catchError(() => throwError(() => new Error('Failed to edit category.')))
+    );
+  }
+
+  createCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.post<boolean>('/categories', category).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new category.')))
     );
   }
 

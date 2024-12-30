@@ -41,24 +41,15 @@
     }
   ],
   "currency": {
-    "base": "EUR",
-    "date": "01.01.2022 12:01",
-    "rates": [
-      {
-        "currency": "EUR",
-        "rate": 1
-      },
-      {
-        "currency": "UAH",
-        "rate": 43.94
-      },
-      {
-        "currency": "USD",
-        "rate": 0.024
-      }
-    ],
     "success": true,
-    "timestamp": 1
+    "timestamp": 1734966796,
+    "base": "EUR",
+    "date": "2024-12-23",
+    "rates": {
+      "USD": 1.038972,
+      "UAH": 43.721569,
+      "EUR": 1
+    }
   },
   "categories": [
     {

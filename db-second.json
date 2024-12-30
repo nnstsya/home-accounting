@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "user@user.com",
+      "password": "12345678",
+      "name": "Admin"
+    },
+    {
+      "id": "2",
+      "email": "john@user.com",
+      "password": "qwerty",
+      "name": "John"
+    }
+  ],
+  "bill": [
+    {
+      "value": 12000,
+      "currency": "EUR",
+      "userId": "1",
+      "id": "ba27"
+    },
+    {
+      "value": 5000,
+      "currency": "EUR",
+      "userId": "2",
+      "id": "2907"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Home",
+      "capacity": 15000,
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "name": "Electronics",
+      "capacity": 5000,
+      "userId": "1"
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "type": "Outcome",
+      "amount": 1300,
+      "categoryId": "1",
+      "date": "13.06.2019 19:49:02",
+      "description": "Bought a dishwasher",
+      "userId": "1"
+    }
+  ]
+}

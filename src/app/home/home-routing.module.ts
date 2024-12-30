@@ -29,6 +29,10 @@ const routes: Routes = [
         component: RecordsComponent
       },
       {
+        path: 'event/:index/:id',
+        component: EventDetailsComponent
+      },
+      {
         path: '**',
         redirectTo: 'billing',
         pathMatch: 'full'

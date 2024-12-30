@@ -10,7 +10,7 @@
   <p class="sidebar__tabs__header">Pages</p>
   <nav mat-tab-nav-bar>
     @for (link of links; track link.title) {
-      <a mat-tab-link [routerLink]="link.url" routerLinkActive="mdc-tab--active" (click)="setActiveLink(link.url)" [active]="activeLink === link.url">
+      <a mat-tab-link [routerLink]="link.url" routerLinkActive="mdc-tab-indicator--active" (click)="setActiveLink(link.url)" [active]="activeLink === link.url">
         {{ link.title }}
       </a>
     }

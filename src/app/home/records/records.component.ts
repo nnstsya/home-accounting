@@ -2,14 +2,16 @@ import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
 import { EventCategoryModel, EventModel } from '@home/models/event.model';
 import { AccountingService } from '@home/services/accounting.service';
-import { MatDialog } from '@angular/material/dialog';
+import { BillingModel } from '@home/models/billing.model';
 import { AddEventModalComponent } from '@home/modals/add-event-modal/add-event-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { v4 as uuidv4 } from 'uuid';
+import { CategoryFormModel } from '@home/models/form.model';
 import { EventFormModel } from '@home/models/form.model';
 import { FormGroup } from '@angular/forms';
 import { modalConfig } from '@home/modals/modal-config';
-import { BillingModel } from '@home/models/billing.model';
+import { CategoryModalComponent } from '@home/modals/category-modal/category-modal.component';
 
 @Component({
   selector: 'app-records',
@@ -30,7 +32,7 @@ export class RecordsComponent implements OnInit {
   }
 
   saveEvent(formData: FormGroup<EventFormModel>) {
-    if (formData.valid) {
+    if (formData.value) {
       const event: EventModel = {
         ...formData.getRawValue(),
         id: uuidv4(),
@@ -71,6 +73,33 @@ export class RecordsComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((formData: FormGroup<EventFormModel>) => {
       this.saveEvent(formData);
+    });
+  }
+
+  createCategory(formData: FormGroup<CategoryFormModel>) {
+    if (formData) {
+      const category: EventCategoryModel = {
+        ...formData.getRawValue(),
+        id: uuidv4(),
+        userId: this.userId,
+      };
+
+      this.accountingService.createCategory(category).pipe(
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe();
+    }
+  }
+
+  openCreateCategoryModal(category?: EventCategoryModel): void {
+    this.dialog.open(CategoryModalComponent, {
+      ...modalConfig,
+      data: {
+        category: category || null,
+      }
+    }).afterClosed().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((formData: FormGroup<CategoryFormModel>) => {
+      this.createCategory(formData);
     });
   }
 }
