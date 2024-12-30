@@ -68,6 +68,18 @@ export class AccountingService {
     );
   }
 
+  editCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.put<boolean>(`/categories/${category.id}`, category).pipe(
+      catchError(() => throwError(() => new Error('Failed to edit category.')))
+    );
+  }
+
+  createCategory(category: EventCategoryModel): Observable<boolean> {
+    return this.http.post<boolean>('/categories', category).pipe(
+      catchError(() => throwError(() => new Error('Failed to create new category.')))
+    );
+  }
+
   getCategoryById(categoryId: string): Observable<EventCategoryModel> {
     const params: HttpParams = new HttpParams().set('id', categoryId);
 
@@ -81,12 +93,6 @@ export class AccountingService {
   deleteCategory(categoryId: string): Observable<boolean> {
     return this.http.delete<boolean>(`/categories/${categoryId}`).pipe(
       catchError(() => throwError(() => new Error('Failed to delete category.')))
-    );
-  }
-
-  createCategory(category: EventCategoryModel): Observable<boolean> {
-    return this.http.post<boolean>('/categories', category).pipe(
-      catchError(() => throwError(() => new Error('Failed to create new category.')))
     );
   }
 
